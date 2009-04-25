@@ -58,3 +58,9 @@ with mod_proxy_html:
     - http://apache.webthing.com/mod_proxy_html/
 
 
+Credits
+=======
+
+Author: Alex Clark <aclark@aclark.net>
+
+
