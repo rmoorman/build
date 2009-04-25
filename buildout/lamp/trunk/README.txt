@@ -11,7 +11,7 @@ References
 ==========
 
 Buildout:
-    - http://pypi.python.org/pypi/zc.buildout/1.2.1
+    - http://buildout.org
 
 LAMP Stack:
     - http://en.wikipedia.org/wiki/LAMP_(software_bundle)
