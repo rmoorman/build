@@ -51,7 +51,7 @@ Then rerun buildout:
 Virtual Hosting
 ===============
 
-You can run numerous, isolated PHP environments  by proxying
+You can run numerous, isolated PHP environments by proxying
 from a web server running on port 80 to the buildout's 
 Apache. If you are using Apache on port 80, this can be done 
 with mod_proxy_html:
