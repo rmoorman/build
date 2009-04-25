@@ -32,3 +32,19 @@ Go get coffee, then:
 If everything looks good:
 
     $ bin/supervisord
+
+
+Configure
+=========
+
+You can change the default ports by editing buildout.cfg:
+
+[ports]
+…
+supervisor = 9001
+apache = 8080
+mysql = 3306
+
+Then rerun buildout:
+
+    $ bin/buildout
