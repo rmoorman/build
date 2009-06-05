@@ -1,0 +1,1 @@
+bootstrap http://svn.zope.org/repos/main/zc.buildout/trunk/bootstrap
