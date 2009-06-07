@@ -7,6 +7,6 @@ This is the companion code for the blog entry:
 Install
 =======
 
-To install Plone like aclark do this:
+To install the latest Plone do this:
 
     - svn co https://svn.aclark.net/svn/public/buildout/plone/trunk/ plone
