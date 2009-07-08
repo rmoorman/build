@@ -1,2 +1,1 @@
-products http://dev.zenoss.org/svn/branches/zenoss-2.4.x/Products
-src/zenoss.extjs http://dev.zenoss.org/svn/branches/zenoss-2.4.x/extjs/
+products http://dev.zenoss.org/svn/branches/zenoss-2.3.x/Products
