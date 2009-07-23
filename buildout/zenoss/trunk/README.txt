@@ -2,7 +2,7 @@ This is the companion code for the presentation:
     - http://www.slideshare.net/aclark/zenoss-buildout
 
 XXX This is currently in development and not working properly yet,
-    but a stable buildout is coming Real Soon Now™
+    but a stable buildout is coming Real Soon Now(TM).
 
     If you'd like to experiment with the status quo, please try
     the following:
