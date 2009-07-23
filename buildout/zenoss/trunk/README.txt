@@ -13,7 +13,11 @@ XXX This is currently in development and not working properly yet,
     - bin/buildout
     - bin/instance fg
 
-    You should get a traceback on 'rrdtool'.
+    You should get a traceback on 'rrdtool', I am currently refactoring the rrdtool
+    build process.
+
+    Also, this buildout currently only works with Zenoss 2.3.x, Zenoss 2.4.x
+    is coming.
 
 Questions/Comments/Concerns/WantToHelp?
     - Please email: aclark@aclark.net
