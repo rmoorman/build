@@ -11,7 +11,7 @@ Install
     - % python2.4 bootstrap.py
     - % bin/buildout
     - % bin/instance fg
-    - Open a browser to http://localhost:8080/Plone
+    - Open http://localhost:8080/Plone
     - Login with admin:admin.
 
 Have fun!
