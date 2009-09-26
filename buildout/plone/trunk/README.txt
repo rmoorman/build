@@ -16,4 +16,4 @@ Install
 
 Have fun!
 
-Questions/Comments/Concerns? Please email: aclark@aclark.net.
+Questions/Comments/Concerns? Please send email to: aclark@aclark.net.
