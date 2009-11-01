@@ -1,3 +1,0 @@
-#!/bin/sh
-
-${mysql:location}/bin/mysqladmin -P ${ports:mysql} -S ${mycnf:sock} -u root -p $*
