@@ -1,66 +1,22 @@
 Introduction
 ============
 
-This is a buildout to create a LAMP stack.
+- This is the companion code for the blog entry:
+  http://aclark.net/team/aclark/blog/a-lamp-buildout-for-wordpress-and-other-php-apps
 
-For more information, please see:
-    - http://aclark.net/Members/aclark/blog/a-lamp-buildout-for-wordpress-and-other-php-apps
+- This buildout creates a LAMP stack, suitable for deploying many PHP apps. 
 
+Installation
+=============
 
-References
-==========
+- To install:
 
-Buildout:
-    - http://buildout.org
+    % svn co https://svn.aclark.net/svn/public/buildout/lamp/trunk lamp-buildout
+    % cd lamp-buildout
+    % python bootstrap.py
+    % bin/buildout
+    % bin/supervisord
 
-LAMP Stack:
-    - http://en.wikipedia.org/wiki/LAMP_(software_bundle)
+Questions/Comments/Concerns?
 
-
-Install
-=======
-
-To install, do the following:
-    $ svn co https://svn.aclark.net/svn/public/buildout/lamp/trunk lamp
-    $ cd lamp
-    $ python bootstrap.py
-    $ bin/buildout
-
-Go get coffee, then:
-    $ bin/supervisord -e debug -n
-
-If everything looks good:
-    $ bin/supervisord
-
-
-Configure
-=========
-
-You can change the default ports by editing buildout.cfg:
-
-    [ports]
-    …
-    supervisor = 9001
-    apache = 8080
-    mysql = 3306
-
-Then rerun buildout:
-    $ bin/buildout
-
-
-Virtual Hosting
-===============
-
-You can run numerous, isolated PHP environments by proxying
-from a web server running on port 80 to the buildout's 
-Apache. If you are using Apache on port 80, this can be done 
-with mod_proxy_html:
-    - http://apache.webthing.com/mod_proxy_html/
-
-
-Credits
-=======
-
-Author: Alex Clark <aclark@aclark.net>
-
-
+E-mail: aclark@aclark.net
