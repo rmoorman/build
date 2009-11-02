@@ -9,14 +9,13 @@ Introduction
 Installation
 =============
 
-- To install:
+- To install a PHP application via buildout, follow these steps:
 
-    % svn co https://svn.aclark.net/svn/public/buildout/lamp/trunk lamp-buildout
+    % svn export http://svn.aclark.net/svn/public/buildout/lamp/trunk lamp-buildout
     % cd lamp-buildout
     % python bootstrap.py
     % bin/buildout
-    % bin/supervisord
+    % bin/supervisord -e debug -n
 
-Questions/Comments/Concerns?
+Questions/Comments/Concerns? Please email: aclark@aclark.net.
 
-E-mail: aclark@aclark.net
