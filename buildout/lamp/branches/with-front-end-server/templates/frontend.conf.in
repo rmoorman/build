@@ -27,7 +27,7 @@
 # httpd daemons, you will need to change at least LockFile and PidFile.
 #
 #ServerRoot "/srv/gg/parts/apache"
-ServerRoot ${apache:location}
+ServerRoot ${frontend:location}
 
 #
 # Listen: Allows you to bind Apache to specific IP addresses and/or
@@ -39,7 +39,7 @@ ServerRoot ${apache:location}
 #
 #Listen 12.34.56.78:80
 #Listen 12080
-Listen ${ports:apache}
+Listen ${ports:frontend}
 
 #
 # Dynamic Shared Object (DSO) Support
