@@ -26,7 +26,7 @@
 # at a local disk.  If you wish to share the same ServerRoot for multiple
 # httpd daemons, you will need to change at least LockFile and PidFile.
 #
-ServerRoot "/Users/aclark/Developer/apache/parts/apache"
+ServerRoot "${apache:location}"
 
 #
 # Listen: Allows you to bind Apache to specific IP addresses and/or
@@ -101,7 +101,7 @@ ServerAdmin you@example.com
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "/Users/aclark/Developer/apache/parts/apache/htdocs"
+DocumentRoot "${apache:location}/htdocs"
 
 #
 # Each directory to which Apache has access can be configured with respect
@@ -128,7 +128,7 @@ DocumentRoot "/Users/aclark/Developer/apache/parts/apache/htdocs"
 #
 # This should be changed to whatever you set DocumentRoot to.
 #
-<Directory "/Users/aclark/Developer/apache/parts/apache/htdocs">
+<Directory "${apache:location}/htdocs">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:
@@ -248,7 +248,7 @@ LogLevel warn
     # client.  The same rules about trailing "/" apply to ScriptAlias
     # directives as to Alias.
     #
-    ScriptAlias /cgi-bin/ "/Users/aclark/Developer/apache/parts/apache/cgi-bin/"
+    ScriptAlias /cgi-bin/ "${apache:location}/cgi-bin/"
 
 </IfModule>
 
@@ -261,10 +261,10 @@ LogLevel warn
 </IfModule>
 
 #
-# "/Users/aclark/Developer/apache/parts/apache/cgi-bin" should be changed to whatever your ScriptAliased
+# "${apache:location}/cgi-bin" should be changed to whatever your ScriptAliased
 # CGI directory exists, if you have that configured.
 #
-<Directory "/Users/aclark/Developer/apache/parts/apache/cgi-bin">
+<Directory "${apache:location}/cgi-bin">
     AllowOverride None
     Options None
     Order allow,deny
@@ -386,6 +386,7 @@ DefaultType text/plain
 
 # Virtual hosts
 #Include conf/extra/httpd-vhosts.conf
+Include ${buildout:directory}/etc/vhosts/*
 
 # Local access to the Apache HTTP Server Manual
 #Include conf/extra/httpd-manual.conf
