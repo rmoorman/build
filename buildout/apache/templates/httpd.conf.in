@@ -386,7 +386,6 @@ DefaultType text/plain
 
 # Virtual hosts
 #Include conf/extra/httpd-vhosts.conf
-Include ${buildout:directory}/etc/vhosts/*
 
 # Local access to the Apache HTTP Server Manual
 #Include conf/extra/httpd-manual.conf
