@@ -1,0 +1,3 @@
+#!/bin/sh
+
+${mysql:location}/bin/mysql -P ${ports:mysql} -S ${mysql-conf:sock} -u root -p $*
