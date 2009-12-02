@@ -1,1 +1,0 @@
-products http://dev.zenoss.org/svn/branches/zenoss-2.3.x/Products
