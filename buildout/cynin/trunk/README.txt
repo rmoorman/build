@@ -19,7 +19,7 @@ Install
 
 * Add a Plone site called Cynin
 
-* In the portal_quickinstaller in the ZMI, quick install Scrawl, followed by Ubi*
+* In the portal_quickinstaller in the ZMI, install Scrawl, then Ubi*
 
 * Open http://localhost:8080/Cynin
 
