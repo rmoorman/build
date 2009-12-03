@@ -13,9 +13,15 @@ Install
     % bin/buildout
     % bin/instance fg
 
-* Open http://localhost:8080
+* Open http://localhost:8080/manage
 
 * Login with admin:admin.
+
+* Add a Plone site called Cynin
+
+* In the portal_quickinstaller in the ZMI, quick install Scrawl, followed by Ubi*
+
+* Open http://localhost:8080/Cynin
 
 Have fun!
 
