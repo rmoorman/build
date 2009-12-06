@@ -17,11 +17,11 @@ Install
 
 * Login with admin:admin.
 
-* Add a Plone site called Cynin
+* Add a Plone site called Plone
 
 * In the portal_quickinstaller in the ZMI, install Scrawl, then Ubi*
 
-* Open http://localhost:8080/Cynin
+* Open http://localhost:8080/Plone
 
 Have fun!
 
