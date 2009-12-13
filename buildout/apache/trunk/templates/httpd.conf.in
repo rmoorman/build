@@ -188,7 +188,8 @@ DocumentRoot "${buildout:directory}/static"
 #
 # This should be changed to whatever you set DocumentRoot to.
 #
-<Directory "/Users/aclark/Developer/public-apache/parts/apache/htdocs">
+#<Directory "/Users/aclark/Developer/public-apache/parts/apache/htdocs">
+<Directory "${buildout:directory}/static">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:
