@@ -4,10 +4,10 @@ Zenoss Buildout
 
 This is the companion code for the presentation: http://www.slideshare.net/aclark/zenoss-buildout
 
-Introduction
+Installation
 ============
 
-To run zenoss via this buildout:
+To run zenoss via buildout, try the following:
 
     % svn export http://svn.aclark.net/svn/public/buildout/zenoss/trunk/ zenoss
     % cd zenoss
