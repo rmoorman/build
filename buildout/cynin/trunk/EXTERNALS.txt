@@ -1,2 +1,0 @@
-products http://odn.cynapse.com/svn/cynin/tags/cynin_3_0_5/products
-src/ubify.freemindflash http://odn.cynapse.com/svn/cynin/tags/cynin_3_0_5/src/ubify.freemindflash
