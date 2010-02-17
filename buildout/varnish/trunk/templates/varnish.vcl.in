@@ -1,7 +1,7 @@
 
 backend backend_0 {
-    .host = ${hosts:localhost};
-    .port = ${ports:instance};
+    .host = "${hosts:localhost}";
+    .port = "${ports:instance}";
     .connect_timeout = 0.4s;
     .first_byte_timeout = 300s;
     .between_bytes_timeout = 60s;
