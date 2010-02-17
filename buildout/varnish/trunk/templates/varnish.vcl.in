@@ -1,0 +1,98 @@
+
+backend backend_0 {
+    .host = "127.0.0.1";
+    .port = "8080";
+    .connect_timeout = 0.4s;
+    .first_byte_timeout = 300s;
+    .between_bytes_timeout = 60s;
+}
+
+
+acl purge {
+    "127.0.0.1";
+}
+
+sub annotate_request {
+    if (!(req.http.Authorization || req.http.cookie ~ "(^|.*; )__ac=")) {
+        set req.http.X-Anonymous = "True";
+    }
+}
+
+sub vcl_recv {
+    set req.grace = 120s;
+    set req.backend = backend_0;
+    
+    if (req.request == "PURGE") {
+        if (!client.ip ~ purge) {
+            error 405 "Not allowed.";
+        }
+        lookup;
+    }
+
+    if (req.request != "GET" &&
+        req.request != "HEAD" &&
+        req.request != "PUT" &&
+        req.request != "POST" &&
+        req.request != "TRACE" &&
+        req.request != "OPTIONS" &&
+        req.request != "DELETE") {
+        /* Non-RFC2616 or CONNECT which is weird. */
+        pipe;
+    }
+
+    if (req.request != "GET" && req.request != "HEAD") {
+        /* We only deal with GET and HEAD by default */
+        pass;
+    }
+
+    if (req.url ~ "createObject") {
+        pass;
+    }
+    
+    call annotate_request;
+    
+    lookup;
+}
+
+sub vcl_hit {
+    if (req.request == "PURGE") {
+        purge_url(req.url);
+        error 200 "Purged";
+    }
+
+    if (!obj.cacheable) {
+        pass;
+    }
+}
+
+sub vcl_miss {
+    if (req.request == "PURGE") {
+        error 404 "Not in cache";
+    }
+
+}
+
+sub vcl_fetch {
+    set obj.grace = 120s;
+    if (!obj.cacheable) {
+        pass;
+    }
+    if (obj.http.Set-Cookie) {
+        pass;
+    }
+    if (obj.http.Cache-Control ~ "(private|no-cache|no-store)") {
+        pass;
+    }
+    if (req.http.Authorization && !obj.http.Cache-Control ~ "public") {
+        pass;
+    }
+}
+
+sub vcl_deliver {
+  # rewrite s-maxage so intermediary proxies don't use it
+  if (resp.http.Cache-Control ~ "s-maxage") {
+    set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "s-maxage=[0-9]+", "s-maxage=0");
+  }
+
+}
+
