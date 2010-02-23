@@ -20,4 +20,5 @@ http {
     sendfile        on;
     keepalive_timeout  65;
     include ${buildout:directory}/etc/vhosts/*;
+    proxy_read_timeout          1200;
 }
