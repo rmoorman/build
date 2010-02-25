@@ -1,21 +1,23 @@
 Introduction
 ============
 
-* This is the companion code for: http://aclark.net/team/aclark/blog/plone-as-eggs
+* This is a Plone 2.1 buildout
 
 Install
 =======
 
-* To install Plone 4 follow these steps:
+* To install Plone follow these steps:
 
     % svn export https://svn.aclark.net/svn/public/buildout/plone/trunk/ plone
-    % python2.6 bootstrap.py
+    % python2.4 bootstrap.py
     % bin/buildout
     % bin/instance fg
 
-* Open http://localhost:8080
+* Open http://localhost:8080/manage
 
 * Login with admin:admin.
+
+* Create a Plone site via the drop down menu.
 
 Have fun!
 
