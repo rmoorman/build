@@ -35,7 +35,7 @@ defaults
   stats realm Haproxy\ statistics
 
 frontend plone
-  bind ${haproxy-conf:bind}
+  bind ${ports:haproxy}
   default_backend instances
   capture cookie __ac len 10
   option httplog
