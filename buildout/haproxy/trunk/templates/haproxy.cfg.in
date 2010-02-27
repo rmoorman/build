@@ -1,3 +1,6 @@
+
+# Based on http://dev.plone.org/plone/browser/Products.PloneOrg/trunk/templates/haproxy.conf.in
+
 global
   log ${hosts:localhost} local6
   maxconn 32000
@@ -31,15 +34,15 @@ defaults
   stats refresh 5s
   stats realm Haproxy\ statistics
 
-frontend zopecluster
+frontend plone
   bind ${haproxy-conf:bind}
-  default_backend zope
+  default_backend instances
   capture cookie __ac len 10
   option httplog
   log ${hosts:localhost} local6
 
 # Load balancing over the zope instances
-backend zope
+backend instances
   appsession __ac len 32 timeout 1d
   balance roundrobin
   cookie serverid
