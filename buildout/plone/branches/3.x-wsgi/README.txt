@@ -1,21 +1,21 @@
 Introduction
 ============
 
-* This is the companion code for: http://aclark.net/team/aclark/blog/plone-as-eggs
+This is a buildout for Plone 3.x with WSGI support from repoze.zope2.
 
 Install
 =======
 
-* To install Plone 4 follow these steps:
+- To install Plone follow these steps:
 
-    % svn export https://svn.aclark.net/svn/public/buildout/plone/trunk/ plone
-    % python2.6 bootstrap.py
-    % bin/buildout
-    % bin/instance fg
+    $ svn export https://svn.aclark.net/svn/public/buildout/plone/branches/3.x-wsgi plone
+    $ python2.4 bootstrap.py
+    $ bin/buildout
+    $ bin/paster serve etc/zope2.ini
 
-* Open http://localhost:8080
+- Open http://localhost:8080/Plone
 
-* Login with admin:admin.
+- Login with admin:admin.
 
 Have fun!
 
