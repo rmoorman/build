@@ -16,4 +16,8 @@ MySQL Buildout
         pidproxy
     --------------
 
+- A word of caution: remove or comment everything in /etc/mysql/my.cnf before
+  using this buildout! If MySQL finds this file (and it will look for
+  it) then bad things happen.
+
 Questions/Comments/Concerns? Email: aclark@aclark.net
