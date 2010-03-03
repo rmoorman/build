@@ -1,14 +1,19 @@
-MySQL buildout
+MySQL Buildout
 ==============
 
-- Need mysql in your buildout? Try:
+- Need MySQL in your buildout? Try adding this to your [buildout] section:
 
-    [buildout] 
+    --------------
     extends = https://svn.aclark.net/svn/public/buildout/mysql/trunk/buildout.cfg
     parts +=
-
-    # Your parts here
-
-----
+        env
+        grp
+        mysql
+        mysql-conf
+        database
+        script-mysql
+        script-admin
+        pidproxy
+    --------------
 
 Questions/Comments/Concerns? Email: aclark@aclark.net
