@@ -9,7 +9,7 @@ Install
 * To install Plone follow these steps:
 
     % svn export http://svn.aclark.net/svn/public/buildout/varnish/trunk plone
-    % python2.6 bootstrap.py
+    % python2.4 bootstrap.py
     % bin/buildout
     % bin/instance fg
 
