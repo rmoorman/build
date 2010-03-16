@@ -9,6 +9,7 @@ Install
 - To install Plone follow these steps::
 
     $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/2.1.x/ plone
+    $ cd plone
     $ python2.4 bootstrap.py
     $ bin/buildout
     $ bin/instance fg
