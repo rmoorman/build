@@ -1,19 +1,28 @@
 Introduction
 ============
 
-* This is the companion code for the blog entry: http://aclark.net/Members/aclark/blog/getting-excited-about-plone-3-2
+This is a Plone 3.x buildout. You can use it in your buildout via the extends
+parameter, e.g.::
+
+    [buildout]
+    extends = http://https://svn.aclark.net/svn/public/buildout/plone/branches/3.x/buildout.cfg
+
+Or follow the install instructions below.
 
 Install
 =======
 
-* To install the latest Plone via this method, follow these steps:
-    - % svn export https://svn.aclark.net/svn/public/buildout/plone/trunk/ plone
-    - % python2.4 bootstrap.py
-    - % bin/buildout
-    - % bin/instance fg
-    - Open http://localhost:8080/Plone
-    - Login with admin:admin.
+- To install Plone 3.x follow these steps::
 
-Have fun!
+    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/3.x/ plone
+    $ python2.4 bootstrap.py
+    $ bin/buildout
+    $ bin/instance fg
+
+- Login with admin:admin
+
+- Use the `Add` menu to add a Plone site
+
+Have fun! 
 
 Questions/Comments/Concerns? Please email: aclark@aclark.net.
