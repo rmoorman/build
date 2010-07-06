@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is a Plone buildout.
+This is a Plone 4.x buildout.
 
 Install
 =======
