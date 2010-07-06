@@ -4,7 +4,7 @@ Introduction
 This is a Plone 4.x buildout.
 
 Install
-=======
+-------
 
 - To install Plone follow these steps::
 
