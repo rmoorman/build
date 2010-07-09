@@ -24,15 +24,5 @@
 		nokeepalive ssl-unclean-shutdown \
 		downgrade-1.0 force-response-1.0
 
-    <Location /clients/sanford>
-        AuthType Basic
-        AuthName "ACLARK.NET, LLC Clients (Sanford)"
-        AuthBasicProvider ldap
-        AuthzLDAPAuthoritative off
-        # ldap://host:port/basedn?attribute?scope?filter
-        AuthLDAPUrl ldap://localhost/ou=People,dc=aclark,dc=net?uid
-        Require ldap-user sanford
-    </Location>
-
 </VirtualHost>
 </IfModule>
