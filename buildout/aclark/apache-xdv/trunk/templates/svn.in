@@ -1,0 +1,197 @@
+WSGIPythonHome ${buildout:directory}/parts/python
+<VirtualHost *:${ports:production}>
+
+	ServerAdmin aclark@aclark.net
+    ServerName svn.aclark.net
+    DocumentRoot /srv/apache/static/svn
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+
+	ErrorLog /srv/apache/var/log/svn-error.log
+	CustomLog /srv/apache/var/log/svn-access.log combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+    RedirectMatch ^[/]svn/aclark*$ https://svn.aclark.net/svn/aclark
+    RedirectMatch ^[/]trac/aclark*$ https://svn.aclark.net/trac/aclark
+    RedirectMatch ^[/]trac/support*$ https://svn.aclark.net/trac/support
+
+    <Location /svn/public>
+        DAV svn
+        SVNPath /srv/svn/public
+        SVNIndexXSLT /public.xsl
+        <LimitExcept GET PROPFIND OPTIONS REPORT>
+            require valid-user
+        </LimitExcept>
+    </Location>
+
+    # http://svn.aclark.net/trac/public
+    WSGIScriptAlias /trac /srv/trac-deploy/aclark/cgi-bin/trac.wsgi
+    <Directory "/srv/trac-deploy/aclark/cgi-bin">
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    Alias /static/ /srv/aclark/static/
+
+    FilterDeclare THEME
+    FilterProvider THEME XSLT resp=Content-Type $text/html
+
+    TransformOptions +ApacheFS +HTML +HideParseErrors
+    TransformSet /trac-public.xsl
+    TransformCache /trac-public.xsl /srv/apache/etc/trac-public.xsl
+
+    <LocationMatch "/trac/public">
+        FilterChain THEME
+    </LocationMatch>
+
+
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+
+	ServerAdmin aclark@aclark.net
+    ServerName svn.aclark.net
+	DocumentRoot /srv/apache/static/svn
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+
+	<Directory /var/www/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ErrorLog /srv/apache/var/log/svn-ssl_error.log
+	CustomLog /srv/apache/var/log/svn-ssl_access.log combined
+
+	Alias /doc/ "/usr/share/doc/"
+	<Directory "/usr/share/doc/">
+		Options Indexes MultiViews FollowSymLinks
+		AllowOverride None
+		Order deny,allow
+		Deny from all
+		Allow from 127.0.0.0/255.0.0.0 ::1/128
+	</Directory>
+
+	SSLEngine on
+	SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+	SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+	<FilesMatch "\.(cgi|shtml|phtml|php)$">
+		SSLOptions +StdEnvVars
+	</FilesMatch>
+
+	<Directory /usr/lib/cgi-bin>
+		SSLOptions +StdEnvVars
+	</Directory>
+
+	BrowserMatch ".*MSIE.*" \
+		nokeepalive ssl-unclean-shutdown \
+		downgrade-1.0 force-response-1.0
+
+    # https://svn.aclark.net/svn/aclark
+    <Location /svn/aclark>
+        DAV svn
+        SVNPath /srv/svn/aclark
+        AuthType Basic
+        AuthName "ACLARK.NET, LLC Code"
+        AuthBasicProvider ldap
+        AuthzLDAPAuthoritative off
+        # ldap://host:port/basedn?attribute?scope?filter
+        AuthLDAPUrl ldap://localhost/ou=People,dc=aclark,dc=net?uid
+        Require valid-user
+        SVNIndexXSLT /aclark.xsl
+    </Location>
+
+    # https://svn.aclark.net/svn/public
+    <Location /svn/public>
+        DAV svn
+        SVNPath /srv/svn/public
+        AuthType Basic
+        AuthName "ACLARK.NET, LLC Code (public)"
+        AuthBasicProvider ldap
+        AuthzLDAPAuthoritative off
+        # ldap://host:port/basedn?attribute?scope?filter
+        AuthLDAPUrl ldap://localhost/ou=People,dc=aclark,dc=net?uid
+        Require valid-user
+        SVNIndexXSLT /public.xsl
+    </Location>
+
+    # https://svn.aclark.net/trac
+    WSGIScriptAlias /trac /srv/trac-deploy/aclark/cgi-bin/trac.wsgi
+    <Directory "/srv/trac-deploy/aclark/cgi-bin">
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    <Location /trac>
+        AuthType Basic
+        AuthName "ACLARK.NET, LLC Code"
+        AuthBasicProvider ldap
+        AuthzLDAPAuthoritative off
+        # ldap://host:port/basedn?attribute?scope?filter
+        AuthLDAPUrl ldap://localhost/ou=People,dc=aclark,dc=net?uid
+        Require valid-user
+        SetEnv TRAC_ENV_PARENT_DIR /srv/trac
+    </Location>
+
+    <Location /trac/support>
+        AuthType Basic
+        AuthName "ACLARK.NET, LLC Support"
+        AuthBasicProvider ldap
+        AuthzLDAPAuthoritative off
+        # ldap://host:port/basedn?attribute?scope?filter
+        AuthLDAPUrl ldap://localhost/ou=People,dc=aclark,dc=net?uid
+        Require valid-user
+        SetEnv TRAC_ENV_PARENT_DIR /srv/trac
+    </Location>
+
+    Alias /static/ /srv/aclark/static/
+
+    FilterDeclare THEME
+    FilterProvider THEME XSLT resp=Content-Type $text/html
+
+    TransformOptions +ApacheFS +HTML +HideParseErrors
+    TransformSet /trac-support.xsl
+    TransformCache /trac-support.xsl /srv/apache/etc/trac-support.xsl
+
+    <LocationMatch "/trac/support">
+        FilterChain THEME
+    </LocationMatch>
+
+#    <LocationMatch "/trac/support/newticket">
+#        FilterChain !
+#    </LocationMatch>
+#
+#    <LocationMatch "/trac/support/ticket">
+#        FilterChain !
+#    </LocationMatch>
+#
+#    <LocationMatch "/trac/support/report">
+#        FilterChain !
+#    </LocationMatch>
+#
+#    <LocationMatch "/trac/support/admin">
+#        FilterChain !
+#    </LocationMatch>
+
+</VirtualHost>
+</IfModule>
