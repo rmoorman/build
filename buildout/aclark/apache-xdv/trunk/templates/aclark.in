@@ -108,24 +108,6 @@ NameVirtualHost *:${ports:production}
 
 </Directory>
 
-# belcampboys.com
-<VirtualHost *:${ports:production}>
-
-    ServerAdmin aclark@aclark.net
-    DocumentRoot /srv/belcampboys.com
-    ServerName belcampboys.com
-    ServerAlias www.belcampboys.com
-
-</VirtualHost>
-
-<Directory "/srv/belcampboys.com">
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Order allow,deny
-    Allow from all
-
-</Directory>
-
 # dist.aclark.net
 <VirtualHost *:${ports:production}>
 
