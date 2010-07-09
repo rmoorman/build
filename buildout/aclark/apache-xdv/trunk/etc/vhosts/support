@@ -1,0 +1,42 @@
+
+<VirtualHost *:80>
+
+	ServerAdmin aclark@aclark.net
+    ServerName support.aclark.net
+
+	ErrorLog /srv/apache/var/log/support-error.log
+	CustomLog /srv/apache/var/log/support-access.log combined
+
+    RedirectMatch ^[/]*$ https://svn.aclark.net/trac/support
+
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+
+	ServerAdmin aclark@aclark.net
+    ServerName support.aclark.net
+
+	ErrorLog /srv/apache/var/log/support-ssl_error.log
+	CustomLog /srv/apache/var/log/support-ssl_access.log combined
+
+	SSLEngine on
+	SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+	SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+	<FilesMatch "\.(cgi|shtml|phtml|php)$">
+		SSLOptions +StdEnvVars
+	</FilesMatch>
+
+	<Directory /usr/lib/cgi-bin>
+		SSLOptions +StdEnvVars
+	</Directory>
+
+	BrowserMatch ".*MSIE.*" \
+		nokeepalive ssl-unclean-shutdown \
+		downgrade-1.0 force-response-1.0
+
+    RedirectMatch ^[/]*$ https://svn.aclark.net/trac/support
+
+</VirtualHost>
+</IfModule>
