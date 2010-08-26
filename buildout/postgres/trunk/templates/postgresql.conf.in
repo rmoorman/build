@@ -112,7 +112,7 @@ port = ${ports:postgres}				# (change requires restart)
 
 # - Memory -
 
-#shared_buffers = 32MB			# min 128kB
+shared_buffers = 24MB			# min 128kB
 					# (change requires restart)
 
 #shared_buffers = 16MB
