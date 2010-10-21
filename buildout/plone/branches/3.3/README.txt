@@ -1,28 +1,41 @@
 Introduction
 ============
 
-This is a Plone 3.x buildout. You can use it in your buildout via the extends
-parameter, e.g.::
-
-    [buildout]
-    extends = http://https://svn.aclark.net/svn/public/buildout/plone/branches/3.x/buildout.cfg
-
-Or follow the install instructions below.
+This is a Plone 3.3 buildout. 
 
 Install
-=======
+-------
 
-- To install Plone 3.x follow these steps::
+- To install Plone follow these steps::
 
-    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/3.x/ plone
+    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/3.3/ plone
+    $ cd plone
+
+- Or, extend this buildout.cfg file in your buildout.cfg file and add the
+  appropriate
+  parts, e.g.::
+
+    [buildout]
+    extends =
+    http://dist.aclark.net/buildout/plone/3.3/buildout.cfg
+    extends-cache = cache
+    parts =  
+        zope2
+        instance
+
+- Then::
+
     $ python2.4 bootstrap.py
     $ bin/buildout
     $ bin/instance fg
 
-- Login with admin:admin
+- Now open ``http://localhost:8080/manage``.
 
-- Use the `Add` menu to add a Plone site
+- Login with:
 
-Have fun! 
+    - User: admin
+    - Password: admin
 
-Questions/Comments/Concerns? Please email: aclark@aclark.net.
+- Use the `Add` menu in the upper right to add a Plone site
+
+Have fun! Questions/Comments/Concerns? Email: aclark@aclark.net.

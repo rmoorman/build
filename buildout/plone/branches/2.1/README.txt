@@ -1,25 +1,41 @@
 Introduction
 ============
 
-- This is a Plone 2.1 buildout.
+This is a Plone 2.1 buildout featuring the Plone 2.1 tarball from
+http://dist.plone.org/archive.
 
 Install
-=======
+-------
 
 - To install Plone follow these steps::
 
-    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/2.1.x/ plone
+    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/2.1/ plone
     $ cd plone
+
+- Or, extend the ``buildout.cfg`` file in your buildout and add the
+  appropriate parts, e.g.::
+
+    [buildout]
+    extends =
+    http://dist.aclark.net/buildout/plone/2.1/buildout.cfg
+    extends-cache = cache 
+    parts =
+        plone
+        instance
+
+- Then::
+
     $ python2.4 bootstrap.py
     $ bin/buildout
     $ bin/instance fg
 
-- Open http://localhost:8080/manage
+- Now open ``http://localhost:8080/manage``.
 
-- Login with admin:admin.
+- Login with:
 
-- Create a Plone site via the drop down menu.
+    - User: admin
+    - Password: admin
 
-Have fun!
+- Use the `Add` menu in the upper right to add a Plone site.
 
-Questions/Comments/Concerns? Email: aclark@aclark.net.
+Have fun! Questions/Comments/Concerns? Email: aclark@aclark.net.
