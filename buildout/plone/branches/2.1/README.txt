@@ -1,11 +1,10 @@
 Introduction
 ============
 
-This is a Plone 2.1 buildout featuring the Plone 2.1 tarball from
-http://dist.plone.org/archive.
+This is a Plone 2.1 buildout. 
 
-Install
--------
+Installation
+------------
 
 - To install Plone follow these steps::
 
