@@ -1,5 +1,5 @@
 from Products.CMFCore.utils import UniqueObject, getToolByName
-from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser, limitGrantedRoles
+from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser
 from Products.CMFCore.utils import getToolByName, _dtmldir
 from OFS.SimpleItem import SimpleItem
 from Globals import InitializeClass, DTMLFile
