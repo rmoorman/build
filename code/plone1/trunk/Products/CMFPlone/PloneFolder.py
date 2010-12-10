@@ -74,8 +74,13 @@ Plone folders can define custom 'view' actions, or will behave like directory li
 class PloneFolder ( SkinnedFolder, DefaultDublinCoreImpl ):
     meta_type = 'Plone Folder' 
     security=ClassSecurityInfo()
-    
-    __implements__ = (DefaultDublinCoreImpl.__implements__ ,
+
+    def __init__(self, id, title=''):
+        DefaultDublinCoreImpl.__init__(self)
+        self.id = id
+        self.title = title
+
+    __implements__ = (  #DefaultDublinCoreImpl.__implements__ ,
                       WriteLockInterface)
 
     manage_options = Folder.manage_options + \
