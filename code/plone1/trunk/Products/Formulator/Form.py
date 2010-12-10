@@ -5,7 +5,7 @@ from App.special_dtml import DTMLFile
 from Persistence import Persistent
 from App.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo
-from AccessControl.Role import RoleManager
+from OFS.role import RoleManager
 from OFS.ObjectManager import ObjectManager
 from OFS.PropertyManager import PropertyManager
 from OFS.SimpleItem import Item
