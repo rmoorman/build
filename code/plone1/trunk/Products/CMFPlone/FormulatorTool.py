@@ -3,7 +3,8 @@ from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser
 from Products.CMFCore.utils import getToolByName, _dtmldir
 from OFS.SimpleItem import SimpleItem
-from Globals import InitializeClass, DTMLFile
+from AccessControl import InitializeClass
+from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore import permissions as CMFCorePermissions
 from OFS.ObjectManager import bad_id
