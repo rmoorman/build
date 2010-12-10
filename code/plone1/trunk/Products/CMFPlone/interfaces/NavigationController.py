@@ -1,6 +1,7 @@
-from Interface import Base
 
-class INavigationController(Base):
+from zope.interface import Interface
+
+class INavigationController(Interface):
     """ The NavigationController acts as a controller that controls complex states of the system.
     
         The interface provides ways for getNext() transition (where to go next) as well as how
