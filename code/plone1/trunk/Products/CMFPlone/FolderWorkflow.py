@@ -1,10 +1,10 @@
 #from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
 from Products.CMFCore import permissions as CMFCorePermissions
-from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
+#from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
 
 def setupFolderWorkflow(wf):
-    setupDefaultWorkflowRev2(wf)
+#    setupDefaultWorkflowRev2(wf)
     #Published folders means that anonymous should be able to 'list the folder contents'
     wf.permissions+=(CMFCorePermissions.ListFolderContents, )
     wf.states.published.permission_roles[CMFCorePermissions.ListFolderContents]=['Anonymous',]
