@@ -7,7 +7,7 @@ from Products.CMFCore.WorkflowCore import WorkflowException
 
 from Globals import InitializeClass, DTMLFile
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION
 from PloneUtilities import log
 
