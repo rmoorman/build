@@ -8,8 +8,8 @@
 from Products.CMFPlone.Portal import addPolicy
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Expression import Expression
-from Products.CMFCore import CMFCorePermissions
-from Products.CMFCore.CMFCorePermissions import AddPortalMember
+from Products.CMFCore import permissions as CMFCorePermissions
+AddPortalMember = CMFCorePermissions.AddPortalMember
 
 from CustomizationPolicy import DefaultCustomizationPolicy
 from interfaces.CustomizationPolicy import ICustomizationPolicy

@@ -39,7 +39,7 @@ out = []
 
 def go(app):
     """ Initialize the ZODB with Plone """
-    old_initialize(app)
+    #old_initialize(app)
 
     # nothing no error at all should
     # stop the creation of the db
