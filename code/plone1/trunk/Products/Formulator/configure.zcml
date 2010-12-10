@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    >
+
+  <!-- event handlers -->
+  <subscriber
+    for=".Field.ZMIField
+      zope.app.container.interfaces.IObjectAddedEvent"
+    handler=".Field.field_added" 
+  />
+
+  <subscriber
+    for=".Field.ZMIField
+      OFS.interfaces.IObjectWillBeRemovedEvent" 
+    handler=".Field.field_removed" 
+  />
+
+  <!-- i18n -->
+  <i18n:registerTranslations directory="i18n" />
+
+</configure>

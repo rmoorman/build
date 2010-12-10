@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formulator\n"
+"POT-Creation-Date: Thu Jun 26 12:35:20 2008\n"
+"PO-Revision-Date: 2004-11-29 17:38+0100\n"
+"Last-Translator: Martijn Faassen <faassen@infrae.com>\n"
+"Language-Team: Infrae i18n team <walco@infrae.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/translation_files/extract.py\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: nl\n"
+"Language-name: Nederlands\n"
+"Preferred-encodings: utf-8\n"
+"Domain: formulator\n"
+
+#: /Validator.py:106 /Validator.py:496 /Validator.py:691
+msgid "Input is required but no input given."
+msgstr "Verplichte invoer niet ontvangen"
+
+#: /Validator.py:154
+msgid "Too much input was given."
+msgstr "Te veel informatie ingevoerd."
+
+#: /Validator.py:177
+msgid "You did not enter an email address."
+msgstr "Geen geldig email adres ingevoerd."
+
+#: /Validator.py:222
+msgid "The entered value did not match the pattern."
+msgstr "Het ingevoerde voldeed niet aan het patroon."
+
+#: /Validator.py:277
+msgid "You did not enter an integer."
+msgstr "Geen geheel getal ingevoerd."
+
+#: /Validator.py:278
+msgid "The integer you entered was out of range."
+msgstr "Het ingevoerde gehele getal was buiten de grenzen."
+
+#: /Validator.py:308
+msgid "You did not enter a floating point number."
+msgstr "Geen gebroken getal (met een punt) ingevoerd."
+
+#: /Validator.py:365
+msgid "You entered too many lines."
+msgstr "Te veel regels ingevoerd."
+
+#: /Validator.py:366
+msgid "A line was too long."
+msgstr "Een regel was te lang."
+
+#: /Validator.py:367
+msgid "You entered too many characters."
+msgstr "Te veel karakters ingevoerd."
+
+#: /Validator.py:441 /Validator.py:497
+msgid "You selected an item that was not in the list."
+msgstr "Er is een item geselecteerd dat niet in de lijst zit."
+
+#: /Validator.py:608
+msgid "The specified link is broken."
+msgstr "De link is gebroken."
+
+#: /Validator.py:692
+msgid "You did not enter a valid date and time."
+msgstr "Geen geldige datum/tijd ingevoerd."
+
+#: /Validator.py:693
+msgid "The date and time you entered were out of range."
+msgstr "De ingevoerde datum/tijd was buiten de grenzen."
+
+#: /Validator.py:83
+msgid "The input failed the external validator."
+msgstr ""

@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formulator\n"
+"POT-Creation-Date: Thu Jun 26 12:35:20 2008\n"
+"PO-Revision-Date:  2005-09-23 23:55+0200\n"
+"Last-Translator: Clemens Robbenhaar <crobbenhaar@web.de>\n"
+"Language-Team: Infrae i18n team <walco@infrae.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/translation_files/extract.py\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: de\n"
+"Language-name: Deutsch\n"
+"X-Is-Fallback-For: de-ch de-at de-li de-lu de-de\n"
+"Preferred-encodings: utf-8 latin1\n"
+"Domain: formulator\n"
+
+#: /Validator.py:106 /Validator.py:496 /Validator.py:691
+msgid "Input is required but no input given."
+msgstr "Das Eingabefeld sollte nicht leer gelassen werden."
+
+#: /Validator.py:154
+msgid "Too much input was given."
+msgstr "Die Eingabe ist mir zu lang."
+
+#: /Validator.py:177
+msgid "You did not enter an email address."
+msgstr "Die e-mail Adresse ist in keinem gültigen Format."
+
+#: /Validator.py:222
+msgid "The entered value did not match the pattern."
+msgstr "Der eingebene Wert passt nicht zu dem vorgegebenen Muster."
+
+#: /Validator.py:277
+msgid "You did not enter an integer."
+msgstr "Ihre Eingabe ist keine Zahl."
+
+#: /Validator.py:278
+msgid "The integer you entered was out of range."
+msgstr "Die eingegeben Zahl ligt nicht im gültigen Bereich."
+
+#: /Validator.py:308
+msgid "You did not enter a floating point number."
+msgstr "Ihre Eingabe ist keine Fliesskommazahl."
+
+#: /Validator.py:365
+msgid "You entered too many lines."
+msgstr "Das sind mir zu viele Zeilen."
+
+#: /Validator.py:366
+msgid "A line was too long."
+msgstr "Eine derZeilen ist zu lang. Leider habe ich vergessen, welche."
+
+#: /Validator.py:367
+msgid "You entered too many characters."
+msgstr "Die Eingabe besteht aus zu vielen Zeichen."
+
+#: /Validator.py:441 /Validator.py:497
+msgid "You selected an item that was not in the list."
+msgstr "Ihre Auswahl ist nicht in der Liste vorhanden."
+
+#: /Validator.py:608
+msgid "The specified link is broken."
+msgstr "Der Link zeigt ins Leere."
+
+#: /Validator.py:692
+msgid "You did not enter a valid date and time."
+msgstr "Ein solches Datum existiert nicht."
+
+#: /Validator.py:693
+msgid "The date and time you entered were out of range."
+msgstr "Das Datum liegt nicht innerhalb des gewünschten Bereichs."
+
+#: /Validator.py:83
+msgid "The input failed the external validator."
+msgstr ""

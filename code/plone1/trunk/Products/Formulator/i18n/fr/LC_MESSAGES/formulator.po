@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Formulator\n"
+"POT-Creation-Date: Thu Jun 26 12:35:20 2008\n"
+"PO-Revision-Date: 2005-05-12 09:31+0100\n"
+"Last-Translator: Joaquin POMBAR <joaquin.pombar@wanadoo.fr>\n"
+"Language-Team: jpombar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/translation_files/extract.py\n"
+"Language-code: fr\n"
+"Language-name: French\n"
+"Preferred-encodings: utf-8\n"
+"Domain: formulator\n"
+
+#: /Validator.py:106 /Validator.py:496 /Validator.py:691
+msgid "Input is required but no input given."
+msgstr "Vous devez saisir une entrée"
+
+#: /Validator.py:154
+msgid "Too much input was given."
+msgstr "Trop d'entrées ont été données"
+
+#: /Validator.py:177
+msgid "You did not enter an email address."
+msgstr "Vous n'avez pas saisi une adresse email"
+
+#: /Validator.py:222
+msgid "The entered value did not match the pattern."
+msgstr "Le valeurs saisies ne correspondent pas au modèle"
+
+#: /Validator.py:277
+msgid "You did not enter an integer."
+msgstr "Vous n'avez pas saisi un entier"
+
+#: /Validator.py:278
+msgid "The integer you entered was out of range."
+msgstr "L'entier saisi était hors du rang"
+
+#: /Validator.py:308
+msgid "You did not enter a floating point number."
+msgstr "Vous n'avez pas saisi un nombre à point flottant"
+
+#: /Validator.py:365
+msgid "You entered too many lines."
+msgstr "Vous avez saisi trop de lignes"
+
+#: /Validator.py:366
+msgid "A line was too long."
+msgstr "Une ligne était trop longue"
+
+#: /Validator.py:367
+msgid "You entered too many characters."
+msgstr "Vous avez saisi trop de caractères"
+
+#: /Validator.py:441 /Validator.py:497
+msgid "You selected an item that was not in the list."
+msgstr "Vous avez saisi un item qui n'est pas dans la liste"
+
+#: /Validator.py:608
+msgid "The specified link is broken."
+msgstr "Le lien spécifié n'est pas disponible"
+
+#: /Validator.py:692
+msgid "You did not enter a valid date and time."
+msgstr "Vous n'avez pas saisi une date et heure valide"
+
+#: /Validator.py:693
+msgid "The date and time you entered were out of range."
+msgstr "La date et heure saisi sont hors du rang"
+
+#: /Validator.py:83
+msgid "The input failed the external validator."
+msgstr ""
