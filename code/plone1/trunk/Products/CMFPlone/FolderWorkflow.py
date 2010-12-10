@@ -1,4 +1,4 @@
-from Products.CMFCore.WorkflowTool import addWorkflowFactory
+#from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
 from Products.CMFCore import CMFCorePermissions
 from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
@@ -26,8 +26,8 @@ def createFolderWorkflow(id):
     ob.setProperties(title='Folder Workflow [Plone]')
     return ob
 
-addWorkflowFactory( createFolderWorkflow, id='folder_workflow'
-                  , title='Folder Workflow [Plone]')	   
+#addWorkflowFactory( createFolderWorkflow, id='folder_workflow'
+#                  , title='Folder Workflow [Plone]')	   
 
 
 def setupPrivateFolderWorkflow(wf):
@@ -63,7 +63,7 @@ def createPrivateFolderWorkflow(id):
     ob.setProperties(title='Private Folder Workflow [Plone]')
     return ob
 
-addWorkflowFactory( createPrivateFolderWorkflow, 
-                    id='private_folder_workflow',
-                    title='Private Folder Workflow [Plone]' )
+#addWorkflowFactory( createPrivateFolderWorkflow, 
+#                    id='private_folder_workflow',
+#                    title='Private Folder Workflow [Plone]' )
 
