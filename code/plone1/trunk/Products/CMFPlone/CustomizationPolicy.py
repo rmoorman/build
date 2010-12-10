@@ -3,7 +3,7 @@ from OFS.PropertyManager import PropertyManager
 from Products.CMFPlone.Portal import addPolicy
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Expression import Expression
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from interfaces.CustomizationPolicy import ICustomizationPolicy
 
 ExtInstalled=0
