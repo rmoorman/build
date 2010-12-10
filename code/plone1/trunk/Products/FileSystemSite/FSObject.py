@@ -24,7 +24,7 @@ from Globals import DevelopmentMode
 from App.class_init import InitializeClass
 from App.special_dtml import HTML
 from AccessControl import ClassSecurityInfo
-from AccessControl.Role import RoleManager
+from OFS.role import RoleManager
 from AccessControl.Permission import Permission
 from Acquisition import Implicit
 from Acquisition import aq_base
