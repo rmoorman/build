@@ -1,5 +1,6 @@
-from Globals import InitializeClass, DTMLFile
+from Globals import DTMLFile
 from AccessControl import ClassSecurityInfo
+from AccessControl.class_init import InitializeClass
 from OFS.SimpleItem import SimpleItem
 
 from Products.CMFCore.utils import UniqueObject, getToolByName
