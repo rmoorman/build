@@ -80,18 +80,21 @@ misc_ = {'plone_icon': Globals.ImageFile(path.join('skins','plone_images','logoI
 
 def initialize(context):
 #    utils.initializeBasesPhase2( z_bases, context )    
+
+
     utils.ToolInit('Plone Tool', tools=tools,
                    product_name='CMFPlone', icon='tool.gif',
                    ).initialize( context )
-    utils.ContentInit( 'Plone Content'
-                     , content_types=contentClasses
-                     , permission=ADD_CONTENT_PERMISSION
-                     , extra_constructors=contentConstructors
-                     , fti=PloneFolder.factory_type_information
-                     ).initialize( context )
-    Portal.register(context, cmfplone_globals)
-    CustomizationPolicy.register(context, cmfplone_globals)
-    PrivateSitePolicy.register(context, cmfplone_globals)
+#    utils.ContentInit( 'Plone Content'
+#                     , content_types=contentClasses
+#                     , permission=ADD_CONTENT_PERMISSION
+#                     , extra_constructors=contentConstructors
+#                     , fti=PloneFolder.factory_type_information
+#                     ).initialize( context )
+#    Portal.register(context, cmfplone_globals)
+#    CustomizationPolicy.register(context, cmfplone_globals)
+#    PrivateSitePolicy.register(context, cmfplone_globals)
+    pass
 
 # setup ZODB if needed
 #import PloneInitialize
