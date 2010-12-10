@@ -16,12 +16,15 @@ AddPortalContent = CMFCorePermissions.AddPortalContent
 
 from Products.CMFDefault.SkinnedFolder import SkinnedFolder
 from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
-from Products.CMFCore.interfaces.DublinCore import DublinCore as IDublinCore
+#from Products.CMFCore.interfaces.DublinCore import DublinCore as IDublinCore
+from Products.CMFCore.interfaces import IDublinCore
 from AccessControl import Permissions, getSecurityManager, ClassSecurityInfo, Unauthorized
 from Products.CMFCore import permissions as CMFCorePermissions
 from Acquisition import aq_base
 from Globals import InitializeClass
-from webdav.WriteLockInterface import WriteLockInterface
+#from webdav.WriteLockInterface import WriteLockInterface
+from webdav.interfaces import IWriteLock as WriteLockInterface
+
 
 from PloneUtilities import log
 
