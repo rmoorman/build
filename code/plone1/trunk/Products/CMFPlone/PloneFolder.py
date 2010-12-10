@@ -1,6 +1,7 @@
 from __future__ import nested_scopes
 
-from Products.CMFCore.utils import _verifyActionPermissions, getToolByName
+#from Products.CMFCore.utils import _verifyActionPermissions, getToolByName
+from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Skinnable import SkinnableObjectManager
 from OFS.Folder import Folder
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
@@ -182,14 +183,14 @@ def _getViewFor(obj, view='view', default=None):
             if action.get('id', None) == default:
                 default=action
             if action.get('id', None) == view:
-                if _verifyActionPermissions(obj, action) and action['action']!='':
-                    action = obj.restrictedTraverse(action['action'])
-                    if action is not None:
-                        return action
+#                if _verifyActionPermissions(obj, action) and action['action']!='':
+                action = obj.restrictedTraverse(action['action'])
+                if action is not None:
+                    return action
 
         if default is not None:    
-            if _verifyActionPermissions(obj, default):
-                return obj.restrictedTraverse(default['action'])
+#            if _verifyActionPermissions(obj, default):
+            return obj.restrictedTraverse(default['action'])
 
         # "view" action is not present or not allowed.
         # Find something that's allowed.
