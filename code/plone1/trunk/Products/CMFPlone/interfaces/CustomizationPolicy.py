@@ -1,6 +1,7 @@
-from Interface import Base
+#from Interface import Base
+from zope.interface import Interface
 
-class ICustomizationPolicy(Base):
+class ICustomizationPolicy(Interface):
     """ A Customization Policy is responsible for setting up a raw Plone instance according to the 
         instruction provided for the Policy.  The Policy must register via Products.CMFPlone.Portal.addPolicy
     """

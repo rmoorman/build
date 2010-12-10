@@ -3,7 +3,7 @@ from migration_util import safeEditProperty
 from Products.CMFPlone import MigrationTool
 #from Products.CMFPlone.Portal import PloneGenerator
 from Products.CMFPlone.CustomizationPolicy import DefaultCustomizationPolicy
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from Products.CMFCore.utils import getToolByName
 
 def rc1rc2(portal):
