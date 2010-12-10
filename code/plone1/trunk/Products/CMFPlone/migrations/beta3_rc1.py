@@ -1,6 +1,6 @@
 from Products.CMFPlone import MigrationTool
 from Products.CMFPlone.CustomizationPolicy import DefaultCustomizationPolicy
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 
 def threerc1(portal):
     """ Upgrade from Plone 1.0 Beta 3 to RC 1 """

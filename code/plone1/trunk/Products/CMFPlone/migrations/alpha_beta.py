@@ -5,7 +5,7 @@
 
 from Products.CMFCore.DirectoryView import createDirectoryView 
 from Products.CMFPlone import cmfplone_globals
-from Products.CMFPlone.Portal import PloneGenerator
+#from Products.CMFPlone.Portal import PloneGenerator
 from Products.CMFPlone.CustomizationPolicy import DefaultCustomizationPolicy
 
 def bestEffortDirectoryViews(ob, name, _prefix):
