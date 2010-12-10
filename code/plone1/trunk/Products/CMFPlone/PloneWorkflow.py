@@ -4,7 +4,7 @@ ModifyPortalContent = CMFCorePermissions.ModifyPortalContent
 View = CMFCorePermissions.View
 AccessContentsInformation = CMFCorePermissions.AccessContentsInformation
 
-from Products.CMFCalendar.EventPermissions import ChangeEvents
+#from Products.CMFCalendar.EventPermissions import ChangeEvents
 
 from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
@@ -19,9 +19,9 @@ def configureEventPermissions(wf):
         need to add it to the workflow definition and make
         it conform to other tranistions/states 
     """
-    wf.permissions+=(ChangeEvents, )
-    wf.states.published.permission_roles[ChangeEvents]=('Manager',)
-    wf.states.pending.permission_roles[ChangeEvents]=('Manager', 'Reviewer')
+#    wf.permissions+=(ChangeEvents, )
+#    wf.states.published.permission_roles[ChangeEvents]=('Manager',)
+#    wf.states.pending.permission_roles[ChangeEvents]=('Manager', 'Reviewer')
 
 def createDefaultPloneWorkflow(id):
     ob=DCWorkflowDefinition(id)
