@@ -4,7 +4,7 @@ from Products.CMFCore.utils import getToolByName, _dtmldir
 from OFS.SimpleItem import SimpleItem
 from Globals import InitializeClass, DTMLFile
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from Products.CMFCore.interfaces.DublinCore import DublinCore
 from types import TupleType, UnicodeType
 from urllib import urlencode
