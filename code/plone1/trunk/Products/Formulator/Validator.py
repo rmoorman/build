@@ -1,6 +1,6 @@
 import re
 import PatternChecker
-from ZPublisher.TaintedString import TaintedString
+from AccessControl.tainted import TaintedString
 from DummyField import fields
 from DateTime import DateTime
 from threading import Thread
