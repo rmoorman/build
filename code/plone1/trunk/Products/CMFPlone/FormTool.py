@@ -5,7 +5,7 @@ __version__ = "$Revision: 1.24.2.2 $"[11:-2] + " " + "$Name: Plone-1_0 $"[7:-2]
 from Products.Formulator.Form import FormValidationError, BasicForm
 from Products.Formulator import StandardFields
 from Products.CMFCore.utils import UniqueObject
-from Globals import InitializeClass
+from AccessControl.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo
 from OFS.SimpleItem import SimpleItem
 from OFS.Folder import Folder

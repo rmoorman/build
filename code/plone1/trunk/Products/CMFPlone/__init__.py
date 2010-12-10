@@ -74,7 +74,7 @@ contentConstructors = ( PloneFolder.addPloneFolder, )
 
 DirectoryView.registerDirectory('skins', cmfplone_globals)
 this_module = sys.modules[ __name__ ]
-z_bases = utils.initializeBasesPhase1(contentClasses, this_module)
+#z_bases = utils.initializeBasesPhase1(contentClasses, this_module)
 
 misc_ = {'plone_icon': Globals.ImageFile(path.join('skins','plone_images','logoIcon.gif'), cmfplone_globals)}
 

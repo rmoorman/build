@@ -1,7 +1,7 @@
 from Products.CMFDefault.PropertiesTool import PropertiesTool as BaseTool
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from OFS.Folder import Folder
-from Globals import InitializeClass
+from AccessControl.class_init import InitializeClass
 
 #from Products.CMFCore.utils SimpleItemWithProperties
 from OFS.PropertyManager import PropertyManager
