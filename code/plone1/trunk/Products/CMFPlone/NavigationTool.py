@@ -5,7 +5,7 @@ __version__ = "$Revision: 1.34.2.2 $"[11:-2] + " " + "$Name: Plone-1_0 $"[7:-2]
 from ZPublisher.mapply import mapply
 from ZPublisher.Publish import call_object, missing_name, dont_publish_class
 from Products.CMFCore.utils import UniqueObject
-from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser, limitGrantedRoles
+from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser
 from Products.CMFCore.utils import getToolByName, _dtmldir
 from Acquisition import Implicit
 from OFS.SimpleItem import SimpleItem
