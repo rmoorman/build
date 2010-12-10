@@ -15,7 +15,7 @@ from Products.CMFCore.TypesTool import FactoryTypeInformation
 from Products.CMFCore.DirectoryView import addDirectoryViews, registerDirectory
 from Products.CMFCore.utils import getToolByName, registerIcon
 from Products.CMFDefault import Portal
-from Products.CMFCalendar.Extensions import Install as CalendarInstall
+#from Products.CMFCalendar.Extensions import Install as CalendarInstall
 from Products.ExternalMethod import ExternalMethod
 import Globals
 import string
@@ -262,7 +262,7 @@ class PloneGenerator(Portal.PortalGenerator):
         self.setupPloneSkins(p)
         self.setupPortalContent(p)
         self.setupForms(p)
-        CalendarInstall.install(p)
+#        CalendarInstall.install(p)
 
         m = p.portal_migration
         m.setInstanceVersion('1.0beta2')
