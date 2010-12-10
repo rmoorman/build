@@ -94,7 +94,7 @@ def initialize(context):
     PrivateSitePolicy.register(context, cmfplone_globals)
 
 # setup ZODB if needed
-import PloneInitialize
+#import PloneInitialize
 
 # setup migrations
 migrations.registerMigrations()
