@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+    <metal:block fill-slot="base">
+        <tal:block tal:define="dummy python:request.set('disable_border', 1)"
+                   tal:replace="nothing">
+        Disable the tabs
+        </tal:block>
+    </metal:block>
+
+<div metal:fill-slot="main">
+   
+	 <h1 i18n:translate="heading_signed_out">You are now logged out</h1>
+	 
+     <div i18n:translate="description_logged_out" tal:omit-tag="">
+    	 <p>
+    	 We hope you enjoyed using our services. We look forward to seeing you again.
+         </p>
+    	 
+         
+    	 <p>
+         Best Regards from the
+         <strong tal:content="python:container.portal_url.getPortalObject().Title()" i18n:name="portal_title">portal title</strong> 
+         team.
+    	 </p>
+     </div>
+	 
+</div>
+	   
+</html>
