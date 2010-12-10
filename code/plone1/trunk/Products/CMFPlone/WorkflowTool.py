@@ -1,5 +1,5 @@
 from Products.CMFCore.utils import UniqueObject
-from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser, limitGrantedRoles
+from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser
 from Products.CMFCore.utils import getToolByName, _dtmldir
 from Products.CMFCore.WorkflowTool import WorkflowTool as BaseTool
 from AccessControl import getSecurityManager
