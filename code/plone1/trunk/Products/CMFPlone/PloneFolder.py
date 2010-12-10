@@ -21,7 +21,7 @@ from Products.CMFCore.interfaces import IDublinCore
 from AccessControl import Permissions, getSecurityManager, ClassSecurityInfo, Unauthorized
 from Products.CMFCore import permissions as CMFCorePermissions
 from Acquisition import aq_base
-from Globals import InitializeClass
+from AccessControl.class_init import InitializeClass
 #from webdav.WriteLockInterface import WriteLockInterface
 from webdav.interfaces import IWriteLock as WriteLockInterface
 
