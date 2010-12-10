@@ -85,12 +85,12 @@ def initialize(context):
     utils.ToolInit('Plone Tool', tools=tools,
                    product_name='CMFPlone', icon='tool.gif',
                    ).initialize( context )
-#    utils.ContentInit( 'Plone Content'
-#                     , content_types=contentClasses
-#                     , permission=ADD_CONTENT_PERMISSION
-#                     , extra_constructors=contentConstructors
-#                     , fti=PloneFolder.factory_type_information
-#                     ).initialize( context )
+    utils.ContentInit( 'Plone Content'
+                     , content_types=contentClasses
+                     , permission=ADD_CONTENT_PERMISSION
+                     , extra_constructors=contentConstructors
+                     , fti=PloneFolder.factory_type_information
+                     ).initialize( context )
 #    Portal.register(context, cmfplone_globals)
 #    CustomizationPolicy.register(context, cmfplone_globals)
 #    PrivateSitePolicy.register(context, cmfplone_globals)
