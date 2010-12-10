@@ -79,7 +79,7 @@ this_module = sys.modules[ __name__ ]
 misc_ = {'plone_icon': Globals.ImageFile(path.join('skins','plone_images','logoIcon.gif'), cmfplone_globals)}
 
 def initialize(context):
-    utils.initializeBasesPhase2( z_bases, context )    
+#    utils.initializeBasesPhase2( z_bases, context )    
     utils.ToolInit('Plone Tool', tools=tools,
                    product_name='CMFPlone', icon='tool.gif',
                    ).initialize( context )
