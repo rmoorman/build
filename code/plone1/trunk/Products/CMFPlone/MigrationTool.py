@@ -3,7 +3,8 @@ from AccessControl import ClassSecurityInfo
 from OFS.SimpleItem import SimpleItem
 
 from Products.CMFCore.utils import UniqueObject, getToolByName
-from Products.CMFCore.CMFCorePermissions import ManagePortal
+from Products.CMFCore import permissions as CMFCorePermissions 
+ManagePortal = CMFCorePermissions.ManagePortal
 
 import zLOG
 import traceback
