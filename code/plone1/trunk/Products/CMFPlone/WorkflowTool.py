@@ -5,7 +5,10 @@ from Products.CMFCore.WorkflowTool import WorkflowTool as BaseTool
 from AccessControl import getSecurityManager
 from Products.CMFCore.WorkflowCore import WorkflowException
 
-from Globals import InitializeClass, DTMLFile
+
+from AccessControl.class_init import InitializeClass
+from App.special_dtml import DTMLFile
+
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore import permissions as CMFCorePermissions
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION
