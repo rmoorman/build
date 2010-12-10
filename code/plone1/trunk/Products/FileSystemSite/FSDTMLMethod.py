@@ -18,8 +18,8 @@ $Id: FSDTMLMethod.py 41663 2006-02-18 13:57:52Z jens $
 from App.special_dtml import DTMLFile, HTML
 from App.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo, getSecurityManager
-from AccessControl.DTML import RestrictedDTML
-from AccessControl.Role import RoleManager
+from DocumentTemplate.security import RestrictedDTML
+from OFS.role import RoleManager
 from OFS.Cache import Cacheable
 from OFS.DTMLMethod import DTMLMethod, decapitate, guess_content_type
 
