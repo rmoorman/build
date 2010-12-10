@@ -1,7 +1,7 @@
 from migration_util import safeEditProperty
 
 from Products.CMFPlone import MigrationTool
-from Products.CMFPlone.Portal import PloneGenerator
+#from Products.CMFPlone.Portal import PloneGenerator
 from Products.CMFPlone.CustomizationPolicy import DefaultCustomizationPolicy
 from Products.CMFCore import CMFCorePermissions
 from Products.CMFCore.utils import getToolByName

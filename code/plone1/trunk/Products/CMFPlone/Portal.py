@@ -21,6 +21,8 @@ import Globals
 import string
 import os, sys, re
 
+from App.class_init import InitializeClass
+
 __version__='1.0'
 
 default_frontpage=r"""
@@ -56,9 +58,9 @@ class PloneSite(CMFSite):
     """
     manage_addPloneFolder = PloneFolder.addPloneFolder
 
-class PloneGenerator(Portal.PortalGenerator):
+#class PloneGenerator(Portal.PortalGenerator):
 
-    klass = PloneSite
+#    klass = PloneSite
 
     def customizePortalTypes(self, p):
         typesTool=getToolByName(p, 'portal_types')
@@ -270,7 +272,8 @@ class PloneGenerator(Portal.PortalGenerator):
         
     def create(self, parent, id, create_userfolder):
         id = str(id)
-        portal = self.klass(id=id)
+#        portal = self.klass(id=id)
+        portal = self(id=id)
         parent._setObject(id, portal)
         p = parent._getOb(id) # Return the fully wrapped object
         self.setup(p, create_userfolder)
@@ -280,7 +283,7 @@ class PloneGenerator(Portal.PortalGenerator):
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 manage_addSiteForm = PageTemplateFile('www/addSite', globals())
 manage_addSiteForm.__name__ = 'addSite'
-from Products.CMFDefault.Portal import manage_addCMFSite
+#from Products.CMFDefault.Portal import manage_addCMFSite
 def manage_addSite(self, id, title='Portal', description='',
                    create_userfolder=1,
                    email_from_address='postmaster@localhost',
@@ -310,8 +313,15 @@ def manage_addSite(self, id, title='Portal', description='',
     if RESPONSE is not None:
         RESPONSE.redirect(p.absolute_url())
         
-def register(context, globals):
-    context.registerClass(meta_type='Plone Site',
-                          permission='Add CMF Sites',
-                          constructors=(manage_addSiteForm,
-                                        manage_addSite,) )    
+#def register(context, globals):
+#    context.registerClass(meta_type='Plone Site',
+#                          permission='Add CMF Sites',
+#                          constructors=(manage_addSiteForm,
+#                                        manage_addSite,) )    
+
+
+#InitializeClass(PloneSite)
+
+
+
+
