@@ -1,0 +1,21 @@
+## Script (Python) "Title"
+##bind container=container
+##bind context=context
+##bind namespace=
+##bind script=script
+##bind subpath=traverse_subpath
+##parameters=
+##title=
+##
+
+doc = """
+  Purpose:
+ 
+  Author: 
+
+  Created:
+
+  CVS: $Id: script,v 1.1 2003/02/10 14:17:43 jw Exp $
+
+  File: 
+"""

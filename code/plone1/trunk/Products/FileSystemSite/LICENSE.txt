@@ -1,0 +1,11 @@
+License
+-------
+
+Most of FileSystemSite is derived from CMFCore by Zope
+Corporation. These files remain copyright Zope Corporation. The
+license is the ZPL, see doc/ZPL.txt.
+
+The files that start with Trusted*, Utils.py and ReuseUtils.py are
+derived from TrustedExecutables by Dieter Mauer. These files are
+copyright Dieter Maurer and are under the BSD-style license in
+doc/TRUSTED_LICENSE.txt.

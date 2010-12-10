@@ -1,0 +1,17 @@
+<dtml-comment>
+
+  Purpose: 
+
+  Author: 
+
+  Created: 
+
+  CVS: $Id: dtml,v 1.1 2003/02/10 14:17:43 jw Exp $
+
+  File: 
+
+</dtml-comment>
+<dtml-var standard_html_header>
+
+
+<dtml-var standard_html_footer>

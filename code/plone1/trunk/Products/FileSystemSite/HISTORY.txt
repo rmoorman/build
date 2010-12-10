@@ -1,0 +1,82 @@
+
+Changes
+=======
+
+2.4 (unreleased)
+----------------
+
+- ...
+
+2.3 (2010/07/15)
+----------------
+
+- Remove .stx support, and unused interfaces to make it work on Zope 2.12.
+
+- Remove deprecated imports on Zope 2.12.
+
+- Add support for fake views on FSPageTemplates.
+
+2.2 (2008/30/09)
+----------------
+
+- Update documentation to ReST format.
+
+- Add interface to some FS-based type (script, template), so we can
+  determine it's FS-based afterwards.
+
+2.1
+---
+
+- Make compatible with Zope 2.10, break compatibility with previous Zope
+  versions.
+
+2.0
+---
+
+- Updated with changes from newer version of CMF.
+
+- Fixed permission name: "Access contents information" instead of
+  wrongly capitalized "Access Contents Information".
+
+1.4.2
+-----
+
+- Added support for Dieter Maurer's TrustedFSPythonScript.
+
+- Fixed the unit tests.
+
+1.4.1 
+-----
+
+- Minor documentation changes.
+
+1.4
+---
+
+- *removed* recursive customization, due to really bad scalability in 
+  large Silva sites.
+
+1.3
+---
+
+- Updated to CMF 1.4.1 code,
+
+- Fixed icon display,
+
+- Ported unit tests,
+
+- Allow recursive customization (Godefroid Chapelle).
+
+1.2
+---
+
+- Updated to CMF 1.3 code,
+
+- Removed .ps extension from editor utils emacs binding,
+
+- Added fix for broken FSZSQL arg handling,
+
+- Added FSExternal Method,
+
+- Removed ZMI customization capability as this caused long time
+  outs for sites with deep structures.
