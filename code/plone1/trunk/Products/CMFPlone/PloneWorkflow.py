@@ -8,11 +8,12 @@ AccessContentsInformation = CMFCorePermissions.AccessContentsInformation
 
 #from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
-from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
+#from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
 
 def setupDefaultPloneWorkflow(wf):
     # nothing but a default DCWorkflow Rev 2 worflow
-    setupDefaultWorkflowRev2(wf)
+    #setupDefaultWorkflowRev2(wf)
+    pass
 
 def configureEventPermissions(wf):
     """ Since events use a unique set of Permissions we 
