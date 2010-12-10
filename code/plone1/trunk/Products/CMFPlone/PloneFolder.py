@@ -5,13 +5,20 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Skinnable import SkinnableObjectManager
 from OFS.Folder import Folder
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
-from Products.CMFCore.CMFCorePermissions import View, ManageProperties, ListFolderContents
-from Products.CMFCore.CMFCorePermissions import AddPortalFolders, AddPortalContent
+#from Products.CMFCore.CMFCorePermissions import View, ManageProperties, ListFolderContents
+#from Products.CMFCore.CMFCorePermissions import AddPortalFolders, AddPortalContent
+from Products.CMFCore import permissions as CMFCorePermissions
+View = CMFCorePermissions.View
+ManageProperties = CMFCorePermissions.ManageProperties
+ListFolderContents = CMFCorePermissions.ListFolderContents
+AddPortalFolders = CMFCorePermissions.AddPortalFolders
+AddPortalContent = CMFCorePermissions.AddPortalContent
+
 from Products.CMFDefault.SkinnedFolder import SkinnedFolder
 from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
 from Products.CMFCore.interfaces.DublinCore import DublinCore as IDublinCore
 from AccessControl import Permissions, getSecurityManager, ClassSecurityInfo, Unauthorized
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from Acquisition import aq_base
 from Globals import InitializeClass
 from webdav.WriteLockInterface import WriteLockInterface
