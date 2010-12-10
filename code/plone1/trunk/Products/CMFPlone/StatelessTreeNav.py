@@ -2,7 +2,7 @@
 # (c) Philipp Auersperg phil@bluedynamics.com 10.09.2002
 
 import string
-from Globals import HTML
+from App.special_dtml import HTML
 from AccessControl import ClassSecurityInfo,ModuleSecurityInfo,allow_class,allow_module
 
 # to be able to import this stuff into python scripts
