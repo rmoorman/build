@@ -6,7 +6,7 @@ AccessContentsInformation = CMFCorePermissions.AccessContentsInformation
 
 #from Products.CMFCalendar.EventPermissions import ChangeEvents
 
-from Products.CMFCore.WorkflowTool import addWorkflowFactory
+#from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
 from Products.DCWorkflow.Default import setupDefaultWorkflowRev2
 
@@ -30,8 +30,8 @@ def createDefaultPloneWorkflow(id):
     configureEventPermissions(ob)
     return ob
 
-addWorkflowFactory( createDefaultPloneWorkflow, id='plone_workflow'
-                  , title='Default Workflow [Plone]')	   
+#addWorkflowFactory( createDefaultPloneWorkflow, id='plone_workflow'
+#                 , title='Default Workflow [Plone]')	   
 
 def setupPrivatePloneWorkflow(wf):
     # default plone workflow plus some modifications
@@ -71,8 +71,8 @@ def createPrivatePloneWorkflow(id):
     ob.setProperties(title='Private Workflow [Plone]')
     return ob
 
-addWorkflowFactory( createPrivatePloneWorkflow, 
-                    id='private_plone_workflow',
-                    title='Private Workflow [Plone]' )	   
+#addWorkflowFactory( createPrivatePloneWorkflow, 
+#                    id='private_plone_workflow',
+#                    title='Private Workflow [Plone]' )	   
 
 
