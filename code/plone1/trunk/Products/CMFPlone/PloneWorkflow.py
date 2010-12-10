@@ -1,5 +1,9 @@
-from Products.CMFCore.CMFCorePermissions import ModifyPortalContent, View, \
-     AccessContentsInformation
+from Products.CMFCore import permissions as CMFCorePermissions 
+
+ModifyPortalContent = CMFCorePermissions.ModifyPortalContent
+View = CMFCorePermissions.View
+AccessContentsInformation = CMFCorePermissions.AccessContentsInformation
+
 from Products.CMFCalendar.EventPermissions import ChangeEvents
 
 from Products.CMFCore.WorkflowTool import addWorkflowFactory
