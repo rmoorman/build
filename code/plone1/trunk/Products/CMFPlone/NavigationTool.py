@@ -11,7 +11,7 @@ from Acquisition import Implicit
 from OFS.SimpleItem import SimpleItem
 from Globals import InitializeClass, DTMLFile
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore import permissions as CMFCorePermissions
 from types import TupleType
 from urllib import urlencode
 from cgi import parse_qs
