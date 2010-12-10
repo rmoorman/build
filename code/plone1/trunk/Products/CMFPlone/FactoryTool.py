@@ -1,5 +1,7 @@
 from Products.CMFCore.utils import UniqueObject
-from Globals import InitializeClass
+
+from AccessControl.class_init import InitializeClass
+
 from Acquisition import aq_parent
 from AccessControl import ClassSecurityInfo
 from OFS.SimpleItem import SimpleItem
