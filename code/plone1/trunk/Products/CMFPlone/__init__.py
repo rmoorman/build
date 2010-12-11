@@ -92,7 +92,7 @@ def initialize(context):
                      , fti=PloneFolder.factory_type_information
                      ).initialize( context )
 
-#    Portal.register(context, cmfplone_globals)
+    Portal.register(context, cmfplone_globals)
 #    CustomizationPolicy.register(context, cmfplone_globals)
 #    PrivateSitePolicy.register(context, cmfplone_globals)
 

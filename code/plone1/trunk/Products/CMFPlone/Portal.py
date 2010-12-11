@@ -313,14 +313,14 @@ def manage_addSite(self, id, title='Portal', description='',
     if RESPONSE is not None:
         RESPONSE.redirect(p.absolute_url())
         
-#def register(context, globals):
-#    context.registerClass(meta_type='Plone Site',
-#                          permission='Add CMF Sites',
-#                          constructors=(manage_addSiteForm,
-#                                        manage_addSite,) )    
+def register(context, globals):
+    context.registerClass(meta_type='Plone Site',
+                          permission='Add CMF Sites',
+                          constructors=(manage_addSiteForm,
+                                        manage_addSite,) )    
 
 
-#InitializeClass(PloneSite)
+InitializeClass(PloneSite)
 
 
 
