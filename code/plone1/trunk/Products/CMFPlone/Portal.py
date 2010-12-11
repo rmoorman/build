@@ -322,7 +322,7 @@ from webdav.NullResource import NullResource
 #from Products.CMFPlone.PloneFolder import ReplaceableWrapper
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+#from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implements
 from zope.component import queryUtility
 
@@ -424,14 +424,14 @@ class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
         """
         return self.listFolderContents(contentFilter)
 
-    security.declarePublic('availableLanguages')
-    def availableLanguages(self):
-        util = queryUtility(IMetadataLanguageAvailability)
-        languages = util.getLanguageListing()
-        languages.sort(lambda x,y:cmp(x[1], y[1]))
-        # Put language neutral at the top.
-        languages.insert(0,(u'',_(u'Language neutral (site default)')))
-        return languages
+#    security.declarePublic('availableLanguages')
+#    def availableLanguages(self):
+#        util = queryUtility(IMetadataLanguageAvailability)
+#        languages = util.getLanguageListing()
+#        languages.sort(lambda x,y:cmp(x[1], y[1]))
+#        # Put language neutral at the top.
+#        languages.insert(0,(u'',_(u'Language neutral (site default)')))
+#        return languages
 
     # Ensure portals don't get cataloged.
     def indexObject(self):
