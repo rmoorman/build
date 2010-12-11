@@ -58,9 +58,14 @@ class PloneSite(CMFSite):
     """
     manage_addPloneFolder = PloneFolder.addPloneFolder
 
-#class PloneGenerator(Portal.PortalGenerator):
+import oldcmf
+class PloneGenerator(oldcmf.PortalGenerator):
 
-#    klass = PloneSite
+    klass = PloneSite
+
+    def __call__(self, id=id):
+        import pdb; pdb.set_trace()
+        self.setupPlone(id)
 
     def customizePortalTypes(self, p):
         typesTool=getToolByName(p, 'portal_types')
@@ -258,7 +263,7 @@ class PloneSite(CMFSite):
                     sys.stderr.write("Unable to parse '%s' in navigation properties file" % (line))
 
     def setupPlone(self, p): 
-        self.customizePortalTypes(p)
+#        self.customizePortalTypes(p)
         self.customizePortalOptions(p)
         self.setupPloneWorkflow(p)
         self.setupPloneSkins(p)
@@ -283,7 +288,7 @@ class PloneSite(CMFSite):
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 manage_addSiteForm = PageTemplateFile('www/addSite', globals())
 manage_addSiteForm.__name__ = 'addSite'
-#from Products.CMFDefault.Portal import manage_addCMFSite
+from oldcmf import manage_addCMFSite
 def manage_addSite(self, id, title='Portal', description='',
                    create_userfolder=1,
                    email_from_address='postmaster@localhost',
@@ -318,10 +323,4 @@ def register(context, globals):
                           permission='Add CMF Sites',
                           constructors=(manage_addSiteForm,
                                         manage_addSite,) )    
-
-
 InitializeClass(PloneSite)
-
-
-
-
