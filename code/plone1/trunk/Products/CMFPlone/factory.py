@@ -81,8 +81,8 @@ def addPloneSite(context, site_id, title='Plone site', description='',
 
     setup_tool.setBaselineContext('profile-%s' % profile_id)
     setup_tool.runAllImportStepsFromProfile('profile-%s' % profile_id)
-    if setup_content:
-        setup_tool.runAllImportStepsFromProfile('profile-%s' % _CONTENT_PROFILE)
+#    if setup_content:
+#        setup_tool.runAllImportStepsFromProfile('profile-%s' % _CONTENT_PROFILE)
 
     # Try to make the title work with Unicode
     if isinstance(title, str):
