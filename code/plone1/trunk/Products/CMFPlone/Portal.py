@@ -311,7 +311,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import UniqueObject
 from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
 #from Products.CMFPlone import PloneMessageFactory as _
-from Products.CMFPlone.PloneFolder import OrderedContainer
+#from Products.CMFPlone.PloneFolder import OrderedContainer
 
 from AccessControl import ClassSecurityInfo
 from AccessControl import Unauthorized
@@ -331,7 +331,7 @@ member_search=context.restrictedTraverse('member_search_form')
 return member_search()
 """
 
-class PloneSite(CMFSite, OrderedContainer, BrowserDefaultMixin, UniqueObject):
+class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
     """Make PloneSite subclass CMFSite and add some methods."""
 
     security = ClassSecurityInfo()
@@ -344,10 +344,10 @@ class PloneSite(CMFSite, OrderedContainer, BrowserDefaultMixin, UniqueObject):
         CMFSite.manage_options[3:]
         )
 
-    manage_renameObject = OrderedContainer.manage_renameObject
+#    manage_renameObject = OrderedContainer.manage_renameObject
 
-    moveObject = OrderedContainer.moveObject
-    moveObjectsByDelta = OrderedContainer.moveObjectsByDelta
+#    moveObject = OrderedContainer.moveObject
+#    moveObjectsByDelta = OrderedContainer.moveObjectsByDelta
 
     # Switch off ZMI ordering interface as it assumes a slightly
     # different functionality
