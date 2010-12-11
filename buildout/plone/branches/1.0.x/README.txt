@@ -1,4 +1,4 @@
 Introduction
 ============
 
-This does nothing useful; it is just for "fun".
+This does nothing useful; it's just for "fun".
