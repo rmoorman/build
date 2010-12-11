@@ -1,299 +1,447 @@
-from AccessControl.class_init import InitializeClass
-from Products.CMFPlone import cmfplone_globals
-from Products.CMFPlone import custom_policies
-from Products.CMFPlone import PloneFolder
+#from AccessControl.class_init import InitializeClass
+#from Products.CMFPlone import cmfplone_globals
+#from Products.CMFPlone import custom_policies
+#from Products.CMFPlone import PloneFolder
+#from Products.CMFDefault.Portal import CMFSite
+#from Products.CMFDefault import Document
+#def listPolicies(): return custom_policies.keys()
+#def addPolicy(label, klass): custom_policies[label]=klass
+#
+#from Products.CMFCore import permissions as CMFCorePermissions
+#from Products.CMFCore.TypesTool import FactoryTypeInformation
+#from Products.CMFCore.DirectoryView import addDirectoryViews, registerDirectory
+#from Products.CMFCore.utils import getToolByName, registerIcon
+#from Products.CMFDefault import Portal
+##from Products.CMFCalendar.Extensions import Install as CalendarInstall
+#from Products.ExternalMethod import ExternalMethod
+#import Globals
+#import string
+#import os, sys, re
+#
+#__version__='1.0'
+#
+#default_frontpage=r"""
+#You can customize this frontpage by clicking the edit tab on this document.
+#In fact this is how you use your new system. Create folders and put content in those folders.
+#It's a very simple and powerful system.  
+#
+#For more information:
+#
+#- "Plone website":http://www.plone.org
+#
+#- "Zope community":http://www.zope.org
+#
+#- "CMF website":http://cmf.zope.org
+#
+#There are "mailing lists":http://www.zope.org/Resources/MailingLists and 
+#"recipe websites":http://www.zopelabs.com  
+#available to provide assistance to you and your new-found Content Management System.
+#"Online chat":http://www.zope.org/Documentation/Chats is also a nice way
+#of getting advice and help. 
+#
+#Please contribute your experiences at the "Plone website":http://www.plone.org
+#
+#Thanks for using our product.
+#
+#"**The Plone Team**":http://plone.org/about/team
+#"""
+#
+#class PloneSite(CMFSite):
+#    """
+#    Make PloneSite subclass CMFSite and add some methods.
+#    This will be useful for adding more things later on.
+#    """
+#    manage_addPloneFolder = PloneFolder.addPloneFolder
+#
+##class PloneGenerator(Portal.PortalGenerator):
+##
+##    klass = PloneSite
+##
+##    def customizePortalTypes(self, p):
+##        typesTool=getToolByName(p, 'portal_types')
+##
+##        typesToSkip=['Folder', 'Discussion Item', 'Topic']
+##        typesTool._delObject('Folder')
+##        typesTool.manage_addTypeInformation(FactoryTypeInformation.meta_type
+##                                           , id='Folder'
+##                                           , typeinfo_name='CMFPlone: Plone Folder')
+##        for contentType in typesTool.listContentTypes():        
+##            typeInfo=typesTool.getTypeInfo(contentType)
+##            if typeInfo.getId() not in typesToSkip:
+##                typeObj=getattr(typesTool, typeInfo.getId())
+##                view=typeInfo.getActionById('edit')
+##                typeObj._setPropValue('immediate_view', view)       
+##            if typeInfo.getId()=='Folder':
+##                typeObj=getattr(typesTool, typeInfo.getId())
+##                view='folder_contents'
+##                typeObj._setPropValue('immediate_view', view)
+##
+##    def customizePortalOptions(self, p):
+##        p.manage_delObjects( 'portal_membership' )
+##        p.manage_delObjects( 'portal_workflow' )
+##        p.manage_delObjects( 'portal_properties' )
+##        addPloneTool=p.manage_addProduct['CMFPlone'].manage_addTool
+##        addPloneTool('Plone Membership Tool', None)
+##        addPloneTool('CMF Workflow Tool', None) 
+##        addPloneTool('CMF Formulator Tool', None)
+##        addPloneTool('Plone Utility Tool', None)
+##        addPloneTool('CMF Navigation Tool', None)
+##        addPloneTool('Plone Factory Tool', None)
+##        addPloneTool('Plone Form Tool', None)
+##        addPloneTool('Plone Properties Tool', None)
+##        addPloneTool('Plone Migration Tool', None)
+##
+##        p.manage_permission( CMFCorePermissions.ListFolderContents, \
+##                             ('Manager', 'Member', 'Owner',), acquire=1 )
+##        p.portal_skins.default_skin='Plone Default'
+##        p.portal_skins.allow_any=1
+##
+##        p.icon = 'misc_/CMFPlone/plone_icon'
+##        
+##        
+##    def setupPortalContent(self, p):
+##        p.manage_delObjects('Members')
+##        PloneFolder.addPloneFolder(p, 'Members')
+##
+##        p.portal_catalog.unindexObject(p.Members) #unindex Members folder
+##        p.Members.manage_addProduct['OFSP'].manage_addDTMLMethod('index_html'
+##                                                                , 'Member list'
+##                                                                , '<dtml-return member_search_form>')
+##        p.Members._setPortalTypeName( 'Folder' )                                                               
+##        Document.addDocument(p, 'index_html')
+##        o = p.index_html
+##        o._setPortalTypeName( 'Document' )
+##        o.setTitle('Welcome to Plone')
+##        o.setDescription('This welcome page is used to introduce you'+\
+##                         ' to the Plone Content Management System.')
+##        o.edit('structured-text', default_frontpage)
+##        
+##        o = p.Members
+##        o.setTitle('Members')
+##        o.setDescription("Container for portal members' home directories")
+##        
+##        
+##    def setupPloneWorkflow(self, p):      
+##        wf_tool=p.portal_workflow
+##        wf_tool.manage_addWorkflow( id='plone_workflow'
+##                                  , workflow_type='plone_workflow '+\
+##                                    '(Default Workflow [Plone])')
+##        wf_tool.setDefaultChain('plone_workflow')
+##
+##        wf_tool.manage_addWorkflow( id='folder_workflow'
+##                                , workflow_type='folder_workflow '+\
+##                                  '(Folder Workflow [Plone])')
+##        wf_tool.setChainForPortalTypes( ('Folder','Topic'), 'folder_workflow')
+##
+##    def setupSecondarySkin(self, skin_tool, skin_title, directory_id):        
+##        path=[elem.strip() for elem in skin_tool.getSkinPath('Plone Default').split(',')]
+##        path.insert(path.index('custom')+1, directory_id)
+##        skin_tool.addSkinSelection(skin_title, ','.join(path))
+##        
+##    def setupPloneSkins(self, p):
+##        sk_tool=p.portal_skins
+##        path=[elem.strip() for elem in sk_tool.getSkinPath('Basic').split(',')]
+##        for plonedir in ( 'plone_content'
+##                    , 'plone_images'
+##                    , 'plone_forms'
+##                    , 'plone_scripts'
+##                    , 'plone_scripts/form_scripts'
+##                    , 'plone_styles'
+##                    , 'plone_templates'
+##                    , 'plone_3rdParty/CMFTopic'
+##                    , 'plone_3rdParty/CMFCalendar'
+##                    , 'plone_templates/ui_slots'
+##                    , 'plone_wysiwyg'
+##                    , 'plone_ecmascript'
+##                    ):
+##            try:
+##                path.insert( path.index( 'custom')+1, plonedir )
+##            except ValueError:
+##                path.append( plonedir )
+##        path=','.join(path)
+##        sk_tool.addSkinSelection('Plone Default', path)
+##
+##        self.setupSecondarySkin(sk_tool, 'Plone Autumn',        'plone_styles/autumn')
+##        self.setupSecondarySkin(sk_tool, 'Plone Core',          'plone_styles/core')
+##        self.setupSecondarySkin(sk_tool, 'Plone Core Inverted', 'plone_styles/core_inverted')
+##        self.setupSecondarySkin(sk_tool, 'Plone Corporate',     'plone_styles/corporate')
+##        self.setupSecondarySkin(sk_tool, 'Plone Greensleeves',  'plone_styles/greensleeves')
+##        self.setupSecondarySkin(sk_tool, 'Plone Kitty',         'plone_styles/kitty')
+##        self.setupSecondarySkin(sk_tool, 'Plone Mozilla',       'plone_styles/mozilla')
+##        self.setupSecondarySkin(sk_tool, 'Plone Mozilla New',   'plone_styles/mozilla_new')
+##        self.setupSecondarySkin(sk_tool, 'Plone Prime',         'plone_styles/prime')
+##        self.setupSecondarySkin(sk_tool, 'Plone Zed',           'plone_styles/zed')
+##
+##        addDirectoryViews( sk_tool, 'skins', cmfplone_globals )
+##        
+##        sk_tool.request_varname='plone_skin'
+##
+##    def setupForms(self, p):
+##        prop_tool = p.portal_properties
+##        prop_tool.manage_addPropertySheet('navigation_properties', \
+##                                          'Navigation Properties')
+##        prop_tool.manage_addPropertySheet('form_properties', 'Form Properties')
+##
+##        form_tool = p.portal_form
+##        form_tool.setValidators('link_edit_form', \
+##                                ['validate_id', 'validate_link_edit'])
+##        form_tool.setValidators('newsitem_edit_form', \
+##                                ['validate_id', 'validate_newsitem_edit'])
+##        form_tool.setValidators('document_edit_form', \
+##                                ['validate_id', 'validate_document_edit'])
+##        form_tool.setValidators('image_edit_form', \
+##                                ['validate_id', 'validate_image_edit'])
+##        form_tool.setValidators('file_edit_form', \
+##                                ['validate_id', 'validate_file_edit'])
+##        form_tool.setValidators('folder_edit_form', \
+##                                ['validate_id', 'validate_folder_edit'])
+##        form_tool.setValidators('event_edit_form', \
+##                                ['validate_id', 'validate_event_edit'])
+##        form_tool.setValidators('topic_edit_form', \
+##                                ['validate_id', 'validate_topic_edit'])
+##        form_tool.setValidators('content_status_history', \
+##                                ['validate_content_status_modify'])
+##        form_tool.setValidators('metadata_edit_form', [])
+##        form_tool.setValidators('reconfig_form', \
+##                                ['validate_reconfig'])
+##        form_tool.setValidators('personalize_form', \
+##                                ['validate_personalize'])
+##        form_tool.setValidators('join_form', \
+##                                ['validate_registration'])
+##        form_tool.setValidators('metadata_edit_form', \
+##                                ['validate_metadata_edit'])
+##        
+##        #set up properties for StatelessTreeNav
+##        from Products.CMFPlone.StatelessTreeNav \
+##             import setupNavTreePropertySheet
+##        setupNavTreePropertySheet(prop_tool)
+##
+##        # grab the initial portal navigation properties
+##        # from data/navigation_properties
+##        nav_tool = getToolByName(p, 'portal_navigation')
+##
+##        # open and parse the file
+##        filename='navigation_properties'
+##        src_file = open(os.path.join(Globals.package_home(globals()), 'data', filename), 'r')
+##        src_lines = src_file.readlines()
+##        src_file.close(); 
+##
+##        re_comment = re.compile(r"\s*#")
+##        re_blank = re.compile(r"\s*\n")
+##        re_transition = re.compile(r"\s*(?P<type>[^\.]*)\.(?P<page>[^\.]*)\.(?P<outcome>[^\s]*)\s*=\s*(?P<action>[^$]*)$")
+##        for line in src_lines:
+##            line = line.strip()
+##            if not re_comment.match(line) and not re_blank.match(line):
+##                match = re_transition.match(line)
+##                if match:
+##                    nav_tool.addTransitionFor(match.group('type'), match.group('page'), match.group('outcome'), match.group('action'))
+##                else:
+##                    sys.stderr.write("Unable to parse '%s' in navigation properties file" % (line))
+##
+##    def setupPlone(self, p): 
+##        self.customizePortalTypes(p)
+##        self.customizePortalOptions(p)
+##        self.setupPloneWorkflow(p)
+##        self.setupPloneSkins(p)
+##        self.setupPortalContent(p)
+##        self.setupForms(p)
+###        CalendarInstall.install(p)
+##
+##        m = p.portal_migration
+##        m.setInstanceVersion('1.0beta2')
+##        m.upgrade()
+##        
+##    def create(self, parent, id, create_userfolder):
+##        id = str(id)
+##        portal = self.klass(id=id)
+##        parent._setObject(id, portal)
+##        p = parent._getOb(id) # Return the fully wrapped object
+##        self.setup(p, create_userfolder)
+##        self.setupPlone(p)
+##        return p
+#    
+#from Products.PageTemplates.PageTemplateFile import PageTemplateFile
+#manage_addSiteForm = PageTemplateFile('www/addSite', globals())
+#manage_addSiteForm.__name__ = 'addSite'
+#
+##from Products.CMFDefault.Portal import manage_addCMFSite
+##def manage_addSite(self, id, title='Portal', description='',
+##                   create_userfolder=1,
+##                   email_from_address='postmaster@localhost',
+##                   email_from_name='Portal Administrator',
+##                   validate_email=0,
+##                   custom_policy='',
+##                   RESPONSE=None):
+##    """ Plone Site factory """
+##    gen = PloneGenerator()
+##    p = gen.create(self, id.strip(), create_userfolder)
+##    gen.setupDefaultProperties(p, title, description,
+##                               email_from_address, email_from_name,
+##                               validate_email)
+##    customization_policy=None
+##    if listPolicies() and custom_policy:
+##        customization_policy=custom_policies[custom_policy]
+##        customization_policy.customize(p)
+##    
+##    # reindex catalog and workflow settings
+##    p.portal_catalog.refreshCatalog()     
+##    p.portal_workflow.updateRoleMappings() 
+##
+##    if RESPONSE is not None:
+##        RESPONSE.redirect(p.absolute_url())
+#        
+##def register(context, globals):
+##    context.registerClass(meta_type='Plone Site',
+##                          permission='Add CMF Sites',
+##                          constructors=(manage_addSiteForm,
+##                                        manage_addSite,) )    
+#
+#InitializeClass(PloneSite)
+
+
+
+
+
+
 from Products.CMFDefault.Portal import CMFSite
-from Products.CMFDefault import Document
-def listPolicies(): return custom_policies.keys()
-def addPolicy(label, klass): custom_policies[label]=klass
 
-from Products.CMFCore import permissions as CMFCorePermissions
-from Products.CMFCore.TypesTool import FactoryTypeInformation
-from Products.CMFCore.DirectoryView import addDirectoryViews, registerDirectory
-from Products.CMFCore.utils import getToolByName, registerIcon
-from Products.CMFDefault import Portal
-#from Products.CMFCalendar.Extensions import Install as CalendarInstall
-from Products.ExternalMethod import ExternalMethod
-import Globals
-import string
-import os, sys, re
+from Products.CMFCore import permissions
+from Products.CMFCore.utils import _checkPermission
+from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import UniqueObject
+from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
+#from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone.PloneFolder import OrderedContainer
 
-__version__='1.0'
+from AccessControl import ClassSecurityInfo
+from AccessControl import Unauthorized
+from Acquisition import aq_base
+from App.class_init import InitializeClass
+from ComputedAttribute import ComputedAttribute
+from webdav.NullResource import NullResource
+from Products.CMFPlone.PloneFolder import ReplaceableWrapper
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
-default_frontpage=r"""
-You can customize this frontpage by clicking the edit tab on this document.
-In fact this is how you use your new system. Create folders and put content in those folders.
-It's a very simple and powerful system.  
+from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+from zope.interface import implements
+from zope.component import queryUtility
 
-For more information:
-
-- "Plone website":http://www.plone.org
-
-- "Zope community":http://www.zope.org
-
-- "CMF website":http://cmf.zope.org
-
-There are "mailing lists":http://www.zope.org/Resources/MailingLists and 
-"recipe websites":http://www.zopelabs.com  
-available to provide assistance to you and your new-found Content Management System.
-"Online chat":http://www.zope.org/Documentation/Chats is also a nice way
-of getting advice and help. 
-
-Please contribute your experiences at the "Plone website":http://www.plone.org
-
-Thanks for using our product.
-
-"**The Plone Team**":http://plone.org/about/team
+member_indexhtml="""\
+member_search=context.restrictedTraverse('member_search_form')
+return member_search()
 """
 
-class PloneSite(CMFSite):
-    """
-    Make PloneSite subclass CMFSite and add some methods.
-    This will be useful for adding more things later on.
-    """
-    manage_addPloneFolder = PloneFolder.addPloneFolder
+class PloneSite(CMFSite, OrderedContainer, BrowserDefaultMixin, UniqueObject):
+    """Make PloneSite subclass CMFSite and add some methods."""
 
-#class PloneGenerator(Portal.PortalGenerator):
-#
-#    klass = PloneSite
-#
-#    def customizePortalTypes(self, p):
-#        typesTool=getToolByName(p, 'portal_types')
-#
-#        typesToSkip=['Folder', 'Discussion Item', 'Topic']
-#        typesTool._delObject('Folder')
-#        typesTool.manage_addTypeInformation(FactoryTypeInformation.meta_type
-#                                           , id='Folder'
-#                                           , typeinfo_name='CMFPlone: Plone Folder')
-#        for contentType in typesTool.listContentTypes():        
-#            typeInfo=typesTool.getTypeInfo(contentType)
-#            if typeInfo.getId() not in typesToSkip:
-#                typeObj=getattr(typesTool, typeInfo.getId())
-#                view=typeInfo.getActionById('edit')
-#                typeObj._setPropValue('immediate_view', view)       
-#            if typeInfo.getId()=='Folder':
-#                typeObj=getattr(typesTool, typeInfo.getId())
-#                view='folder_contents'
-#                typeObj._setPropValue('immediate_view', view)
-#
-#    def customizePortalOptions(self, p):
-#        p.manage_delObjects( 'portal_membership' )
-#        p.manage_delObjects( 'portal_workflow' )
-#        p.manage_delObjects( 'portal_properties' )
-#        addPloneTool=p.manage_addProduct['CMFPlone'].manage_addTool
-#        addPloneTool('Plone Membership Tool', None)
-#        addPloneTool('CMF Workflow Tool', None) 
-#        addPloneTool('CMF Formulator Tool', None)
-#        addPloneTool('Plone Utility Tool', None)
-#        addPloneTool('CMF Navigation Tool', None)
-#        addPloneTool('Plone Factory Tool', None)
-#        addPloneTool('Plone Form Tool', None)
-#        addPloneTool('Plone Properties Tool', None)
-#        addPloneTool('Plone Migration Tool', None)
-#
-#        p.manage_permission( CMFCorePermissions.ListFolderContents, \
-#                             ('Manager', 'Member', 'Owner',), acquire=1 )
-#        p.portal_skins.default_skin='Plone Default'
-#        p.portal_skins.allow_any=1
-#
-#        p.icon = 'misc_/CMFPlone/plone_icon'
-#        
-#        
-#    def setupPortalContent(self, p):
-#        p.manage_delObjects('Members')
-#        PloneFolder.addPloneFolder(p, 'Members')
-#
-#        p.portal_catalog.unindexObject(p.Members) #unindex Members folder
-#        p.Members.manage_addProduct['OFSP'].manage_addDTMLMethod('index_html'
-#                                                                , 'Member list'
-#                                                                , '<dtml-return member_search_form>')
-#        p.Members._setPortalTypeName( 'Folder' )                                                               
-#        Document.addDocument(p, 'index_html')
-#        o = p.index_html
-#        o._setPortalTypeName( 'Document' )
-#        o.setTitle('Welcome to Plone')
-#        o.setDescription('This welcome page is used to introduce you'+\
-#                         ' to the Plone Content Management System.')
-#        o.edit('structured-text', default_frontpage)
-#        
-#        o = p.Members
-#        o.setTitle('Members')
-#        o.setDescription("Container for portal members' home directories")
-#        
-#        
-#    def setupPloneWorkflow(self, p):      
-#        wf_tool=p.portal_workflow
-#        wf_tool.manage_addWorkflow( id='plone_workflow'
-#                                  , workflow_type='plone_workflow '+\
-#                                    '(Default Workflow [Plone])')
-#        wf_tool.setDefaultChain('plone_workflow')
-#
-#        wf_tool.manage_addWorkflow( id='folder_workflow'
-#                                , workflow_type='folder_workflow '+\
-#                                  '(Folder Workflow [Plone])')
-#        wf_tool.setChainForPortalTypes( ('Folder','Topic'), 'folder_workflow')
-#
-#    def setupSecondarySkin(self, skin_tool, skin_title, directory_id):        
-#        path=[elem.strip() for elem in skin_tool.getSkinPath('Plone Default').split(',')]
-#        path.insert(path.index('custom')+1, directory_id)
-#        skin_tool.addSkinSelection(skin_title, ','.join(path))
-#        
-#    def setupPloneSkins(self, p):
-#        sk_tool=p.portal_skins
-#        path=[elem.strip() for elem in sk_tool.getSkinPath('Basic').split(',')]
-#        for plonedir in ( 'plone_content'
-#                    , 'plone_images'
-#                    , 'plone_forms'
-#                    , 'plone_scripts'
-#                    , 'plone_scripts/form_scripts'
-#                    , 'plone_styles'
-#                    , 'plone_templates'
-#                    , 'plone_3rdParty/CMFTopic'
-#                    , 'plone_3rdParty/CMFCalendar'
-#                    , 'plone_templates/ui_slots'
-#                    , 'plone_wysiwyg'
-#                    , 'plone_ecmascript'
-#                    ):
-#            try:
-#                path.insert( path.index( 'custom')+1, plonedir )
-#            except ValueError:
-#                path.append( plonedir )
-#        path=','.join(path)
-#        sk_tool.addSkinSelection('Plone Default', path)
-#
-#        self.setupSecondarySkin(sk_tool, 'Plone Autumn',        'plone_styles/autumn')
-#        self.setupSecondarySkin(sk_tool, 'Plone Core',          'plone_styles/core')
-#        self.setupSecondarySkin(sk_tool, 'Plone Core Inverted', 'plone_styles/core_inverted')
-#        self.setupSecondarySkin(sk_tool, 'Plone Corporate',     'plone_styles/corporate')
-#        self.setupSecondarySkin(sk_tool, 'Plone Greensleeves',  'plone_styles/greensleeves')
-#        self.setupSecondarySkin(sk_tool, 'Plone Kitty',         'plone_styles/kitty')
-#        self.setupSecondarySkin(sk_tool, 'Plone Mozilla',       'plone_styles/mozilla')
-#        self.setupSecondarySkin(sk_tool, 'Plone Mozilla New',   'plone_styles/mozilla_new')
-#        self.setupSecondarySkin(sk_tool, 'Plone Prime',         'plone_styles/prime')
-#        self.setupSecondarySkin(sk_tool, 'Plone Zed',           'plone_styles/zed')
-#
-#        addDirectoryViews( sk_tool, 'skins', cmfplone_globals )
-#        
-#        sk_tool.request_varname='plone_skin'
-#
-#    def setupForms(self, p):
-#        prop_tool = p.portal_properties
-#        prop_tool.manage_addPropertySheet('navigation_properties', \
-#                                          'Navigation Properties')
-#        prop_tool.manage_addPropertySheet('form_properties', 'Form Properties')
-#
-#        form_tool = p.portal_form
-#        form_tool.setValidators('link_edit_form', \
-#                                ['validate_id', 'validate_link_edit'])
-#        form_tool.setValidators('newsitem_edit_form', \
-#                                ['validate_id', 'validate_newsitem_edit'])
-#        form_tool.setValidators('document_edit_form', \
-#                                ['validate_id', 'validate_document_edit'])
-#        form_tool.setValidators('image_edit_form', \
-#                                ['validate_id', 'validate_image_edit'])
-#        form_tool.setValidators('file_edit_form', \
-#                                ['validate_id', 'validate_file_edit'])
-#        form_tool.setValidators('folder_edit_form', \
-#                                ['validate_id', 'validate_folder_edit'])
-#        form_tool.setValidators('event_edit_form', \
-#                                ['validate_id', 'validate_event_edit'])
-#        form_tool.setValidators('topic_edit_form', \
-#                                ['validate_id', 'validate_topic_edit'])
-#        form_tool.setValidators('content_status_history', \
-#                                ['validate_content_status_modify'])
-#        form_tool.setValidators('metadata_edit_form', [])
-#        form_tool.setValidators('reconfig_form', \
-#                                ['validate_reconfig'])
-#        form_tool.setValidators('personalize_form', \
-#                                ['validate_personalize'])
-#        form_tool.setValidators('join_form', \
-#                                ['validate_registration'])
-#        form_tool.setValidators('metadata_edit_form', \
-#                                ['validate_metadata_edit'])
-#        
-#        #set up properties for StatelessTreeNav
-#        from Products.CMFPlone.StatelessTreeNav \
-#             import setupNavTreePropertySheet
-#        setupNavTreePropertySheet(prop_tool)
-#
-#        # grab the initial portal navigation properties
-#        # from data/navigation_properties
-#        nav_tool = getToolByName(p, 'portal_navigation')
-#
-#        # open and parse the file
-#        filename='navigation_properties'
-#        src_file = open(os.path.join(Globals.package_home(globals()), 'data', filename), 'r')
-#        src_lines = src_file.readlines()
-#        src_file.close(); 
-#
-#        re_comment = re.compile(r"\s*#")
-#        re_blank = re.compile(r"\s*\n")
-#        re_transition = re.compile(r"\s*(?P<type>[^\.]*)\.(?P<page>[^\.]*)\.(?P<outcome>[^\s]*)\s*=\s*(?P<action>[^$]*)$")
-#        for line in src_lines:
-#            line = line.strip()
-#            if not re_comment.match(line) and not re_blank.match(line):
-#                match = re_transition.match(line)
-#                if match:
-#                    nav_tool.addTransitionFor(match.group('type'), match.group('page'), match.group('outcome'), match.group('action'))
-#                else:
-#                    sys.stderr.write("Unable to parse '%s' in navigation properties file" % (line))
-#
-#    def setupPlone(self, p): 
-#        self.customizePortalTypes(p)
-#        self.customizePortalOptions(p)
-#        self.setupPloneWorkflow(p)
-#        self.setupPloneSkins(p)
-#        self.setupPortalContent(p)
-#        self.setupForms(p)
-##        CalendarInstall.install(p)
-#
-#        m = p.portal_migration
-#        m.setInstanceVersion('1.0beta2')
-#        m.upgrade()
-#        
-#    def create(self, parent, id, create_userfolder):
-#        id = str(id)
-#        portal = self.klass(id=id)
-#        parent._setObject(id, portal)
-#        p = parent._getOb(id) # Return the fully wrapped object
-#        self.setup(p, create_userfolder)
-#        self.setupPlone(p)
-#        return p
-    
-from Products.PageTemplates.PageTemplateFile import PageTemplateFile
-manage_addSiteForm = PageTemplateFile('www/addSite', globals())
-manage_addSiteForm.__name__ = 'addSite'
+    security = ClassSecurityInfo()
+    meta_type = portal_type = 'Plone Site'
 
-#from Products.CMFDefault.Portal import manage_addCMFSite
-#def manage_addSite(self, id, title='Portal', description='',
-#                   create_userfolder=1,
-#                   email_from_address='postmaster@localhost',
-#                   email_from_name='Portal Administrator',
-#                   validate_email=0,
-#                   custom_policy='',
-#                   RESPONSE=None):
-#    """ Plone Site factory """
-#    gen = PloneGenerator()
-#    p = gen.create(self, id.strip(), create_userfolder)
-#    gen.setupDefaultProperties(p, title, description,
-#                               email_from_address, email_from_name,
-#                               validate_email)
-#    customization_policy=None
-#    if listPolicies() and custom_policy:
-#        customization_policy=custom_policies[custom_policy]
-#        customization_policy.customize(p)
-#    
-#    # reindex catalog and workflow settings
-#    p.portal_catalog.refreshCatalog()     
-#    p.portal_workflow.updateRoleMappings() 
-#
-#    if RESPONSE is not None:
-#        RESPONSE.redirect(p.absolute_url())
-        
-#def register(context, globals):
-#    context.registerClass(meta_type='Plone Site',
-#                          permission='Add CMF Sites',
-#                          constructors=(manage_addSiteForm,
-#                                        manage_addSite,) )    
+    implements(IPloneSiteRoot)
+
+    manage_options = (
+        CMFSite.manage_options[:2] +
+        CMFSite.manage_options[3:]
+        )
+
+    manage_renameObject = OrderedContainer.manage_renameObject
+
+    moveObject = OrderedContainer.moveObject
+    moveObjectsByDelta = OrderedContainer.moveObjectsByDelta
+
+    # Switch off ZMI ordering interface as it assumes a slightly
+    # different functionality
+    has_order_support = 0
+    management_page_charset = 'utf-8'
+    _default_sort_key = 'id'
+    _properties = (
+        {'id':'title', 'type':'string', 'mode': 'w'},
+        {'id':'description', 'type':'text', 'mode': 'w'},
+        )
+    title = ''
+    description = ''
+    icon = 'misc_/CMFPlone/tool.gif'
+
+    def __browser_default__(self, request):
+        """ Set default so we can return whatever we want instead
+        of index_html """
+        return getToolByName(self, 'plone_utils').browserDefault(self)
+
+    def index_html(self):
+        """ Acquire if not present. """
+        request = getattr(self, 'REQUEST', None)
+        if request is not None and 'REQUEST_METHOD' in request:
+            if request.maybe_webdav_client:
+                method = request['REQUEST_METHOD']
+                if method in ('PUT',):
+                    # Very likely a WebDAV client trying to create something
+                    return ReplaceableWrapper(NullResource(self, 'index_html'))
+                elif method in ('GET', 'HEAD', 'POST'):
+                    # Do nothing, let it go and acquire.
+                    pass
+                else:
+                    raise AttributeError, 'index_html'
+        # Acquire from skin.
+        _target = self.__getattr__('index_html')
+        return ReplaceableWrapper(aq_base(_target).__of__(self))
+
+    index_html = ComputedAttribute(index_html, 1)
+
+    def manage_beforeDelete(self, container, item):
+        """ Should send out an Event before Site is being deleted """
+        self.removal_inprogress=1
+        PloneSite.inheritedAttribute('manage_beforeDelete')(self, container, item)
+
+    security.declareProtected(permissions.DeleteObjects, 'manage_delObjects')
+    def manage_delObjects(self, ids=[], REQUEST=None):
+        """We need to enforce security."""
+        if isinstance(ids, basestring):
+            ids = [ids]
+        for id in ids:
+            item = self._getOb(id)
+            if not _checkPermission(permissions.DeleteObjects, item):
+                raise Unauthorized, (
+                    "Do not have permissions to remove this object")
+        return CMFSite.manage_delObjects(self, ids, REQUEST=REQUEST)
+
+    def view(self):
+        """ Ensure that we get a plain view of the object, via a delegation to
+        __call__(), which is defined in BrowserDefaultMixin
+        """
+        return self()
+
+    security.declareProtected(permissions.AccessContentsInformation,
+        'folderlistingFolderContents')
+    def folderlistingFolderContents(self, contentFilter=None):
+        """Calls listFolderContents in protected only by ACI so that
+        folder_listing can work without the List folder contents permission,
+        as in CMFDefault.
+
+        This is copied from Archetypes Basefolder and is needed by the
+        reference browser.
+        """
+        return self.listFolderContents(contentFilter)
+
+    security.declarePublic('availableLanguages')
+    def availableLanguages(self):
+        util = queryUtility(IMetadataLanguageAvailability)
+        languages = util.getLanguageListing()
+        languages.sort(lambda x,y:cmp(x[1], y[1]))
+        # Put language neutral at the top.
+        languages.insert(0,(u'',_(u'Language neutral (site default)')))
+        return languages
+
+    # Ensure portals don't get cataloged.
+    def indexObject(self):
+        pass
+
+    def unindexObject(self):
+        pass
+
+    def reindexObject(self, idxs=[]):
+        pass
+
+    def reindexObjectSecurity(self, skip_self=False):
+        pass
 
 InitializeClass(PloneSite)
