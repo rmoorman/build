@@ -16,7 +16,7 @@ _CONTENT_PROFILE = 'Products.CMFPlone:plone-content'
 _IMREALLYPLONE4 = True
 
 class HiddenProfiles(object):
-    implements(INonInstallable)
+#    implements(INonInstallable)
 
     def getNonInstallableProfiles(self):
         return [_DEFAULT_PROFILE,
