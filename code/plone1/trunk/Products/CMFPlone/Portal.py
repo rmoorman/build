@@ -319,7 +319,7 @@ from Acquisition import aq_base
 from App.class_init import InitializeClass
 from ComputedAttribute import ComputedAttribute
 from webdav.NullResource import NullResource
-from Products.CMFPlone.PloneFolder import ReplaceableWrapper
+#from Products.CMFPlone.PloneFolder import ReplaceableWrapper
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
@@ -375,7 +375,8 @@ class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
                 method = request['REQUEST_METHOD']
                 if method in ('PUT',):
                     # Very likely a WebDAV client trying to create something
-                    return ReplaceableWrapper(NullResource(self, 'index_html'))
+#                    return ReplaceableWrapper(NullResource(self, 'index_html'))
+                    return NullResource(self, 'index_html')
                 elif method in ('GET', 'HEAD', 'POST'):
                     # Do nothing, let it go and acquire.
                     pass
@@ -383,7 +384,8 @@ class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
                     raise AttributeError, 'index_html'
         # Acquire from skin.
         _target = self.__getattr__('index_html')
-        return ReplaceableWrapper(aq_base(_target).__of__(self))
+#        return ReplaceableWrapper(aq_base(_target).__of__(self))
+        return aq_base(_target).__of__(self)
 
     index_html = ComputedAttribute(index_html, 1)
 
