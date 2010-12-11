@@ -1,6 +1,6 @@
 #These CustomizationPolicies *are not* persisted!!
 from OFS.PropertyManager import PropertyManager
-from Products.CMFPlone.Portal import addPolicy
+#from Products.CMFPlone.Portal import addPolicy
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Expression import Expression
 from Products.CMFCore import permissions as CMFCorePermissions
@@ -8,8 +8,8 @@ from interfaces.CustomizationPolicy import ICustomizationPolicy
 
 ExtInstalled=0
 
-def register(context, app_state):
-    addPolicy('Default Plone', DefaultCustomizationPolicy())
+#def register(context, app_state):
+#    addPolicy('Default Plone', DefaultCustomizationPolicy())
 
 class DefaultCustomizationPolicy:
     """ Customizes various actions on CMF tools """
