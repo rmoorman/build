@@ -293,4 +293,4 @@ manage_addSiteForm.__name__ = 'addSite'
 #    context.registerClass(meta_type='Plone Site',
 #                          permission='Add CMF Sites',
 #                          constructors=(manage_addSiteForm,
-                                        manage_addSite,) )    
+#                                        manage_addSite,) )    
