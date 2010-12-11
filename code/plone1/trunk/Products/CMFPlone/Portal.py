@@ -1,3 +1,4 @@
+from AccessControl.class_init import InitializeClass
 from Products.CMFPlone import cmfplone_globals
 from Products.CMFPlone import custom_policies
 from Products.CMFPlone import PloneFolder
@@ -294,3 +295,5 @@ manage_addSiteForm.__name__ = 'addSite'
 #                          permission='Add CMF Sites',
 #                          constructors=(manage_addSiteForm,
 #                                        manage_addSite,) )    
+
+InitializeClass(PloneSite)
