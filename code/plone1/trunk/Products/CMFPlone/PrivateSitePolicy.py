@@ -5,7 +5,7 @@
 # to anonymous members.  But there is a questionable use case
 # which is letting anonymous members see some sort of content
 
-from Products.CMFPlone.Portal import addPolicy
+#from Products.CMFPlone.Portal import addPolicy
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.Expression import Expression
 from Products.CMFCore import permissions as CMFCorePermissions
@@ -14,8 +14,8 @@ AddPortalMember = CMFCorePermissions.AddPortalMember
 from CustomizationPolicy import DefaultCustomizationPolicy
 from interfaces.CustomizationPolicy import ICustomizationPolicy
 
-def register(context, app_state):
-    addPolicy('Private Plone site', PrivateSitePolicy())
+#def register(context, app_state):
+#    addPolicy('Private Plone site', PrivateSitePolicy())
 
 class PrivateSitePolicy(DefaultCustomizationPolicy):
     """ Customizes the Plone site so that its private """
