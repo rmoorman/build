@@ -309,7 +309,7 @@ from Products.CMFCore import permissions
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import UniqueObject
-from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
+#from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
 #from Products.CMFPlone import PloneMessageFactory as _
 #from Products.CMFPlone.PloneFolder import OrderedContainer
 
@@ -331,7 +331,7 @@ member_search=context.restrictedTraverse('member_search_form')
 return member_search()
 """
 
-class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
+class PloneSite(CMFSite, UniqueObject):
     """Make PloneSite subclass CMFSite and add some methods."""
 
     security = ClassSecurityInfo()
@@ -362,10 +362,10 @@ class PloneSite(CMFSite, BrowserDefaultMixin, UniqueObject):
     description = ''
     icon = 'misc_/CMFPlone/tool.gif'
 
-    def __browser_default__(self, request):
-        """ Set default so we can return whatever we want instead
-        of index_html """
-        return getToolByName(self, 'plone_utils').browserDefault(self)
+#    def __browser_default__(self, request):
+#        """ Set default so we can return whatever we want instead
+#        of index_html """
+#        return getToolByName(self, 'plone_utils').browserDefault(self)
 
     def index_html(self):
         """ Acquire if not present. """

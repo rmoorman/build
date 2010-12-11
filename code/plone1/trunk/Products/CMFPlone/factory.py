@@ -10,7 +10,7 @@ from Products.CMFPlone.Portal import PloneSite
 
 _TOOL_ID = 'portal_setup'
 _DEFAULT_PROFILE = 'Products.CMFPlone:plone'
-_CONTENT_PROFILE = 'Products.CMFPlone:plone-content'
+#_CONTENT_PROFILE = 'Products.CMFPlone:plone-content'
 
 # A little hint for PloneTestCase
 _IMREALLYPLONE4 = True
@@ -56,6 +56,7 @@ class HiddenProfiles(object):
 
 def zmi_constructor(context):
     """This is a dummy constructor for the ZMI."""
+
     url = context.DestinationURL()
     request = context.REQUEST
     return request.response.redirect(url + '/@@plone-addsite?site_id=Plone')
@@ -65,7 +66,8 @@ def addPloneSite(context, site_id, title='Plone site', description='',
                  create_userfolder=True, email_from_address='',
                  email_from_name='', validate_email=True,
                  profile_id=_DEFAULT_PROFILE, snapshot=False,
-                 extension_ids=(), setup_content=True, default_language='en'):
+                 extension_ids=(), setup_content=False, default_language='en'):
+
     """Add a PloneSite to the context."""
     context._setObject(site_id, PloneSite(site_id))
     site = context._getOb(site_id)
@@ -74,7 +76,7 @@ def addPloneSite(context, site_id, title='Plone site', description='',
     site[_TOOL_ID] = SetupTool(_TOOL_ID)
     setup_tool = site[_TOOL_ID]
 
-    notify(SiteManagerCreatedEvent(site))
+#    notify(SiteManagerCreatedEvent(site))
     setSite(site)
 
     setup_tool.setBaselineContext('profile-%s' % profile_id)
