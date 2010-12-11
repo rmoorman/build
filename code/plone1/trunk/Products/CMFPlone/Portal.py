@@ -1,5 +1,3 @@
-from __future__ import nested_scopes
-    
 from Products.CMFPlone import cmfplone_globals
 from Products.CMFPlone import custom_policies
 from Products.CMFPlone import PloneFolder
@@ -8,28 +6,23 @@ from Products.CMFDefault import Document
 def listPolicies(): return custom_policies.keys()
 def addPolicy(label, klass): custom_policies[label]=klass
 
-from Products.CMFCore import permissions as CMFCorePermissions
-#from Products.CMFCore.TypesTool import ContentFactoryMetadata
-from Products.CMFCore.TypesTool import FactoryTypeInformation
-
+from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore.TypesTool import ContentFactoryMetadata, FactoryTypeInformation
 from Products.CMFCore.DirectoryView import addDirectoryViews, registerDirectory
 from Products.CMFCore.utils import getToolByName, registerIcon
 from Products.CMFDefault import Portal
-#from Products.CMFCalendar.Extensions import Install as CalendarInstall
+from Products.CMFCalendar.Extensions import Install as CalendarInstall
 from Products.ExternalMethod import ExternalMethod
 import Globals
 import string
 import os, sys, re
 
-from App.class_init import InitializeClass
-
 __version__='1.0'
 
 default_frontpage=r"""
-You can customize this frontpage by clicking the edit tab on this document if you
-have the correct permissions. Create folders and put content in those folders.
-Folders will show up in the navigation box if they are published. It's a very 
-simple and powerful system.  
+You can customize this frontpage by clicking the edit tab on this document.
+In fact this is how you use your new system. Create folders and put content in those folders.
+It's a very simple and powerful system.  
 
 For more information:
 
@@ -39,18 +32,19 @@ For more information:
 
 - "CMF website":http://cmf.zope.org
 
-There are "mailing lists":http://plone.org/development/lists and 
+There are "mailing lists":http://www.zope.org/Resources/MailingLists and 
 "recipe websites":http://www.zopelabs.com  
 available to provide assistance to you and your new-found Content Management System.
-"Online chat":http://plone.org/development/chat is also a nice way
+"Online chat":http://www.zope.org/Documentation/Chats is also a nice way
 of getting advice and help. 
 
 Please contribute your experiences at the "Plone website":http://www.plone.org
 
 Thanks for using our product.
 
-"Plone":img:logoIcon.gif  "The Plone Team":http://plone.org/about/team
+"**The Plone Team**":http://plone.org/about/team
 """
+
 class PloneSite(CMFSite):
     """
     Make PloneSite subclass CMFSite and add some methods.
@@ -58,14 +52,9 @@ class PloneSite(CMFSite):
     """
     manage_addPloneFolder = PloneFolder.addPloneFolder
 
-import oldcmf
-class PloneGenerator(oldcmf.PortalGenerator):
+class PloneGenerator(Portal.PortalGenerator):
 
     klass = PloneSite
-
-    def __call__(self, id=id):
-        import pdb; pdb.set_trace()
-        self.setupPlone(id)
 
     def customizePortalTypes(self, p):
         typesTool=getToolByName(p, 'portal_types')
@@ -87,33 +76,19 @@ class PloneGenerator(oldcmf.PortalGenerator):
                 typeObj._setPropValue('immediate_view', view)
 
     def customizePortalOptions(self, p):
-        def exists(id):
-            return id in p.objectIds()
-        if exists('portal_membership'):
-            p.manage_delObjects( 'portal_membership' )
-        if exists('portal_workflow'):
-            p.manage_delObjects( 'portal_workflow' )
-        if exists('portal_properties'):
-            p.manage_delObjects( 'portal_properties' )
-
+        p.manage_delObjects( 'portal_membership' )
+        p.manage_delObjects( 'portal_workflow' )
+        p.manage_delObjects( 'portal_properties' )
         addPloneTool=p.manage_addProduct['CMFPlone'].manage_addTool
-
         addPloneTool('Plone Membership Tool', None)
         addPloneTool('CMF Workflow Tool', None) 
-        if not exists('portal_form_validation'):
-            addPloneTool('CMF Formulator Tool', None)
-        if not exists('plone_utils'):
-            addPloneTool('Plone Utility Tool', None)
-        if not exists('portal_navigation'):
-            addPloneTool('CMF Navigation Tool', None)
-        if not exists('portal_factory'):
-            addPloneTool('Plone Factory Tool', None)
-        if not exists('portal_form'):
-            addPloneTool('Plone Form Tool', None)
-        if not exists('portal_properties'):
-            addPloneTool('Plone Properties Tool', None)
-        if not exists('portal_migration'):
-            addPloneTool('Plone Migration Tool', None)
+        addPloneTool('CMF Formulator Tool', None)
+        addPloneTool('Plone Utility Tool', None)
+        addPloneTool('CMF Navigation Tool', None)
+        addPloneTool('Plone Factory Tool', None)
+        addPloneTool('Plone Form Tool', None)
+        addPloneTool('Plone Properties Tool', None)
+        addPloneTool('Plone Migration Tool', None)
 
         p.manage_permission( CMFCorePermissions.ListFolderContents, \
                              ('Manager', 'Member', 'Owner',), acquire=1 )
@@ -263,13 +238,13 @@ class PloneGenerator(oldcmf.PortalGenerator):
                     sys.stderr.write("Unable to parse '%s' in navigation properties file" % (line))
 
     def setupPlone(self, p): 
-#        self.customizePortalTypes(p)
+        self.customizePortalTypes(p)
         self.customizePortalOptions(p)
         self.setupPloneWorkflow(p)
         self.setupPloneSkins(p)
         self.setupPortalContent(p)
         self.setupForms(p)
-#        CalendarInstall.install(p)
+        CalendarInstall.install(p)
 
         m = p.portal_migration
         m.setInstanceVersion('1.0beta2')
@@ -277,8 +252,7 @@ class PloneGenerator(oldcmf.PortalGenerator):
         
     def create(self, parent, id, create_userfolder):
         id = str(id)
-#        portal = self.klass(id=id)
-        portal = self(id=id)
+        portal = self.klass(id=id)
         parent._setObject(id, portal)
         p = parent._getOb(id) # Return the fully wrapped object
         self.setup(p, create_userfolder)
@@ -288,7 +262,7 @@ class PloneGenerator(oldcmf.PortalGenerator):
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 manage_addSiteForm = PageTemplateFile('www/addSite', globals())
 manage_addSiteForm.__name__ = 'addSite'
-from oldcmf import manage_addCMFSite
+from Products.CMFDefault.Portal import manage_addCMFSite
 def manage_addSite(self, id, title='Portal', description='',
                    create_userfolder=1,
                    email_from_address='postmaster@localhost',
@@ -305,12 +279,8 @@ def manage_addSite(self, id, title='Portal', description='',
     customization_policy=None
     if listPolicies() and custom_policy:
         customization_policy=custom_policies[custom_policy]
-        # Save customization policy results on a object
-        result = customization_policy.customize(p)
-        if result:
-            p.invokeFactory(type_name='Document', id='CustomizationLog')
-            p.CustomizationLog.edit(text_format='plain', text=result)
-
+        customization_policy.customize(p)
+    
     # reindex catalog and workflow settings
     p.portal_catalog.refreshCatalog()     
     p.portal_workflow.updateRoleMappings() 
@@ -323,4 +293,3 @@ def register(context, globals):
                           permission='Add CMF Sites',
                           constructors=(manage_addSiteForm,
                                         manage_addSite,) )    
-InitializeClass(PloneSite)
