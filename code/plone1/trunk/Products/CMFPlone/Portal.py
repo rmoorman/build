@@ -6,8 +6,8 @@ from Products.CMFDefault import Document
 def listPolicies(): return custom_policies.keys()
 def addPolicy(label, klass): custom_policies[label]=klass
 
-from Products.CMFCore import CMFCorePermissions
-from Products.CMFCore.TypesTool import ContentFactoryMetadata, FactoryTypeInformation
+from Products.CMFCore import permissions as CMFCorePermissions
+from Products.CMFCore.TypesTool import FactoryTypeInformation
 from Products.CMFCore.DirectoryView import addDirectoryViews, registerDirectory
 from Products.CMFCore.utils import getToolByName, registerIcon
 from Products.CMFDefault import Portal
