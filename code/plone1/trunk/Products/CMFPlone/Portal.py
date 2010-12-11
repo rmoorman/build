@@ -262,31 +262,32 @@ class PloneSite(CMFSite):
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 manage_addSiteForm = PageTemplateFile('www/addSite', globals())
 manage_addSiteForm.__name__ = 'addSite'
-from Products.CMFDefault.Portal import manage_addCMFSite
-def manage_addSite(self, id, title='Portal', description='',
-                   create_userfolder=1,
-                   email_from_address='postmaster@localhost',
-                   email_from_name='Portal Administrator',
-                   validate_email=0,
-                   custom_policy='',
-                   RESPONSE=None):
-    """ Plone Site factory """
-    gen = PloneGenerator()
-    p = gen.create(self, id.strip(), create_userfolder)
-    gen.setupDefaultProperties(p, title, description,
-                               email_from_address, email_from_name,
-                               validate_email)
-    customization_policy=None
-    if listPolicies() and custom_policy:
-        customization_policy=custom_policies[custom_policy]
-        customization_policy.customize(p)
-    
-    # reindex catalog and workflow settings
-    p.portal_catalog.refreshCatalog()     
-    p.portal_workflow.updateRoleMappings() 
 
-    if RESPONSE is not None:
-        RESPONSE.redirect(p.absolute_url())
+#from Products.CMFDefault.Portal import manage_addCMFSite
+#def manage_addSite(self, id, title='Portal', description='',
+#                   create_userfolder=1,
+#                   email_from_address='postmaster@localhost',
+#                   email_from_name='Portal Administrator',
+#                   validate_email=0,
+#                   custom_policy='',
+#                   RESPONSE=None):
+#    """ Plone Site factory """
+#    gen = PloneGenerator()
+#    p = gen.create(self, id.strip(), create_userfolder)
+#    gen.setupDefaultProperties(p, title, description,
+#                               email_from_address, email_from_name,
+#                               validate_email)
+#    customization_policy=None
+#    if listPolicies() and custom_policy:
+#        customization_policy=custom_policies[custom_policy]
+#        customization_policy.customize(p)
+#    
+#    # reindex catalog and workflow settings
+#    p.portal_catalog.refreshCatalog()     
+#    p.portal_workflow.updateRoleMappings() 
+#
+#    if RESPONSE is not None:
+#        RESPONSE.redirect(p.absolute_url())
         
 def register(context, globals):
     context.registerClass(meta_type='Plone Site',
