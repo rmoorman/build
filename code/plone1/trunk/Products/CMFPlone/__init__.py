@@ -96,6 +96,16 @@ def initialize(context):
 #    CustomizationPolicy.register(context, cmfplone_globals)
 #    PrivateSitePolicy.register(context, cmfplone_globals)
 
+    from Products.CMFPlone.Portal import PloneSite
+    from Products.CMFPlone.factory import zmi_constructor
+    from AccessControl.Permissions import view_management_screens
+    context.registerClass(
+        instance_class=PloneSite,
+        permission=view_management_screens,
+        constructors=(zmi_constructor,),
+    )
+
+
 
 # setup ZODB if needed
 #import PloneInitialize
