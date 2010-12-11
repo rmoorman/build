@@ -4,7 +4,7 @@ from zope.site.hooks import setSite
 
 from Products.GenericSetup.tool import SetupTool
 
-from Products.CMFPlone.events import SiteManagerCreatedEvent
+#from Products.CMFPlone.events import SiteManagerCreatedEvent
 from Products.CMFPlone.interfaces import INonInstallable
 from Products.CMFPlone.Portal import PloneSite
 
