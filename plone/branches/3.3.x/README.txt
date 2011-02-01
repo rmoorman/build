@@ -8,7 +8,7 @@ Install
 
 - To install Plone follow these steps::
 
-    $ svn export http://svn.aclark.net/svn/public/buildout/plone/branches/3.3/ plone
+    $ svn export http://svn.aclark.net/svn/public/plone/branches/3.3.x/ plone
     $ cd plone
 
 - Or, extend this buildout.cfg file in your buildout.cfg file and add the
@@ -17,7 +17,7 @@ Install
 
     [buildout]
     extends =
-    http://dist.aclark.net/buildout/plone/3.3/buildout.cfg
+    http://dist.aclark.net/build/plone/3.3.x/buildout.cfg
     extends-cache = cache
     parts =  
         zope2

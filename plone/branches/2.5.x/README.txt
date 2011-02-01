@@ -8,7 +8,7 @@ Install
 
 - To install Plone follow these steps::
 
-    $ svn export https://svn.aclark.net/svn/public/buildout/plone/branches/2.5/ plone
+    $ svn export http://svn.aclark.net/svn/public/plone/branches/2.5.x/ plone
     $ python2.4 bootstrap.py
     $ bin/buildout
     $ bin/instance fg
@@ -18,8 +18,8 @@ Install
 
     [buildout]
     extends =
-    http://dist.aclark.net/buildout/plone/2.5/buildout.cfg
-    extends-cache = cache
+    http://dist.aclark.net/build/plone/2.5.x/buildout.cfg
+    extends-cache = .
     parts = 
         zope2
         instance
