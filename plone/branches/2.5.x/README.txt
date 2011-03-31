@@ -1,36 +1,16 @@
 Introduction
 ============
 
-This is a Plone 2.5 buildout.
+This is a Plone 2.5.x buildout.
 
-Install
--------
+Installation
+------------
 
-- To install Plone follow these steps::
-
-    $ svn export http://svn.aclark.net/svn/public/plone/branches/2.5.x/ plone
-    $ python2.4 bootstrap.py
+    $ virtualenv-2.4 plone
+    $ cd plone
+    $ bin/easy_install zc.buildout
+    $ curl http://dist.aclark.net/build/plone/2.5.x/extends.cfg > buildout.cfg
     $ bin/buildout
     $ bin/instance fg
 
-- Or, extend this buildout.cfg file in your buildout.cfg file and add the appropriate
-  parts, e.g.::
-
-    [buildout]
-    extends =
-    http://dist.aclark.net/build/plone/2.5.x/buildout.cfg
-    extends-cache = .
-    parts = 
-        zope2
-        instance
-
-- Now open ``http://localhost:8080/manage``.
-
-- Login with:
-
-    - User: admin
-    - Password: admin
-
-- Use the `Add` menu in the upper right to add a Plone site
-
-Have fun! Questions/Comments/Concerns? Email: aclark@aclark.net.
+Questions/Comments/Concerns? E-mail: aclark@aclark.net.

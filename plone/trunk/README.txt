@@ -1,36 +1,16 @@
 Introduction
 ============
 
-This is a Plone 4.x buildout.
+This is a Plone trunk buildout.
 
-Install via export
-------------------
+Installation
+------------
 
-- To install Plone, follow these steps::
-
-    $ svn export https://svn.aclark.net/svn/public/buildout/plone/trunk/ plone
-    $ python2.6 bootstrap.py
+    $ virtualenv-2.6 plone
+    $ cd plone
+    $ bin/easy_install zc.buildout
+    $ curl http://dist.aclark.net/build/plone/trunk/extends.cfg > buildout.cfg
     $ bin/buildout
-    $ bin/instance fg
+    $ bin/plone fg
 
-- Open http://localhost:8080
-
-- Login with admin:admin.
-
-
-Install via extends
--------------------
-
-- Or, extend this buildout.cfg file in your buildout.cfg file, and add the
-  appropriate parts, e.g.::
-
-    [buildout]
-    extends =
-    http://svn.aclark.net/svn/public/buildout/plone/trunk/buildout.cfg
-    extends-cache = cache
-    parts =
-        instance
-
-Have fun!
-
-Questions/Comments/Concerns? Email: aclark@aclark.net.
+Questions/Comments/Concerns? E-mail: aclark@aclark.net.

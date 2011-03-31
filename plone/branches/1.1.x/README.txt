@@ -6,10 +6,10 @@ This is a Plone 1.1.x buildout.
 Installation
 ------------
 
-    $ virtualenv2.4 plone
+    $ virtualenv-2.4 plone
     $ cd plone
     $ bin/easy_install zc.buildout
-    $ bin/buildout init
+    $ curl http://dist.aclark.net/build/plone/1.1.x/extends.cfg > buildout.cfg
     $ bin/buildout
     $ parts/zope2/start
 
