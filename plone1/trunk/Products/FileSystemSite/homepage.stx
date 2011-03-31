@@ -1,6 +1,0 @@
-FileSystemSite is a product derived from the CMFCore, which enables
-you to maintain Page Templates, Python Scripts and so on on the
-filesystem, instead of in the ZODB.
-
-This can help large scale development where code needs to be
-maintained in CVS.

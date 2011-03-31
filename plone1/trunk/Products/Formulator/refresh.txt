@@ -1,3 +1,0 @@
-refreshing is not guaranteed to work with Formulator, but you can give
-it a try if you like.
-
