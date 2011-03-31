@@ -6,7 +6,10 @@ This is a Plone 1.1.x buildout.
 Installation
 ------------
 
-    $ python2.4 bootstrap.py
+    $ virtualenv2.4 plone
+    $ cd plone
+    $ bin/easy_install zc.buildout
+    $ bin/buildout init
     $ bin/buildout
     $ parts/zope2/start
 
