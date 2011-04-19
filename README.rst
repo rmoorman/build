@@ -33,4 +33,4 @@ And ones we have forked::
 
 * http://pypi.python.org/pypi/Pillow 
 
-_`4.0.x`:http://dist.aclark.net/build/plone/4.0.x
+.. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x
