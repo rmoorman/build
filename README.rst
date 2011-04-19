@@ -17,7 +17,7 @@ The most useful deployments end up here:
 Packages
 --------
 
-We also provide links to some open source contributions we've made, hosted elsewhere:
+We also provide links to open source contributions we've made, hosted elsewhere:
 
 * http://pypi.python.org/pypi/buildout.bootstrap
 * http://pypi.python.org/pypi/collective.package
