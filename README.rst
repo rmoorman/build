@@ -29,8 +29,8 @@ As well as some packages we did not create, but help maintain:
 
 * http://pypi.python.org/pypi/Products.PloneSoftwareCenter 
 
-And ones we have forked::
+And ones we have forked:
 
-* http://pypi.python.org/pypi/Pillow 
+* http://pypi.python.org/pypi/Pillow
 
 .. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x
