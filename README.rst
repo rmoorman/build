@@ -12,7 +12,7 @@ Here we provide ``zc.buildout`` configuration files we use to deploy open source
 
 The most useful deployments end up here:
 
-* http://dist.aclark.net
+* http://dist.aclark.net/build
 
 Packages
 --------
@@ -24,6 +24,7 @@ We also provide links to some open source contributions we've made, hosted elsew
 * http://pypi.python.org/pypi/collective.project
 * http://pypi.python.org/pypi/collective.recipe.grp
 * http://pypi.python.org/pypi/collective.recipe.rsync 
+* http://pypi.python.org/pypi/vanity
 
 As well as some packages we did not create, but help maintain:
 
