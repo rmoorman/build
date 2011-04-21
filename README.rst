@@ -26,7 +26,7 @@ As well as some packages we did not create, but help maintain:
 
 * http://pypi.python.org/pypi/Products.PloneSoftwareCenter 
 
-And ones we have forked:
+And one we have forked:
 
 * http://pypi.python.org/pypi/Pillow
 
