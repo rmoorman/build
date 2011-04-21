@@ -10,10 +10,6 @@ Here we provide ``zc.buildout`` configuration files we use to deploy various ope
 
 * `4.0.x`_
 
-The most useful deployments end up here:
-
-* http://dist.aclark.net/build
-
 Packages
 --------
 
@@ -34,4 +30,4 @@ And ones we have forked:
 
 * http://pypi.python.org/pypi/Pillow
 
-.. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x
+.. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x/buildout.cfg
