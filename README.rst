@@ -6,7 +6,7 @@ Welcome to our public software repository!
 Buildouts
 ---------
 
-Here we provide ``zc.buildout`` configuration files we use to deploy various open source applications, like Plone:
+Here we provide ``zc.buildout`` configuration files we use to deploy open source applications, like Plone:
 
 * `4.0.x`_
 
