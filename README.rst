@@ -8,13 +8,13 @@ Buildouts
 
 Here we provide ``zc.buildout`` configuration files we use to deploy various open source applications, like Plone:
 
-    * `trunk`_
-    * `4.1.x`_
-    * `4.0.x`_
-    * `3.3.x`_
-    * `2.5.x`_
-    * `2.1.x`_
-    * `1.1.x`_
+* `trunk`_
+* `4.1.x`_
+* `4.0.x`_
+* `3.3.x`_
+* `2.5.x`_
+* `2.1.x`_
+* `1.1.x`_
 
 Packages
 --------
@@ -36,9 +36,9 @@ And packages we have forked:
 
 * http://pypi.python.org/pypi/Pillow
 
-.. _`trunk`: http://dist.aclark.net/build/plone/trunk/buildout.cfg
-.. _`4.1.x`: http://dist.aclark.net/build/plone/4.1.x/buildout.cfg
-.. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x/buildout.cfg
-.. _`3.3.x`: http://dist.aclark.net/build/plone/3.3.x/buildout.cfg
-.. _`2.5.x`: http://dist.aclark.net/build/plone/2.5.x/buildout.cfg
-.. _`1.1.x`: http://dist.aclark.net/build/plone/1.1.x/buildout.cfg
+.. _`trunk`: http://dist.aclark.net/build/plone/trunk/
+.. _`4.1.x`: http://dist.aclark.net/build/plone/4.1.x/
+.. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x/
+.. _`3.3.x`: http://dist.aclark.net/build/plone/3.3.x/
+.. _`2.5.x`: http://dist.aclark.net/build/plone/2.5.x/
+.. _`1.1.x`: http://dist.aclark.net/build/plone/1.1.x/
