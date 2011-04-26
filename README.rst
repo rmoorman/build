@@ -41,4 +41,5 @@ And packages we have forked:
 .. _`4.0.x`: http://dist.aclark.net/build/plone/4.0.x/
 .. _`3.3.x`: http://dist.aclark.net/build/plone/3.3.x/
 .. _`2.5.x`: http://dist.aclark.net/build/plone/2.5.x/
+.. _`2.1.x`: http://dist.aclark.net/build/plone/2.1.x/
 .. _`1.1.x`: http://dist.aclark.net/build/plone/1.1.x/
