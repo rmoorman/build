@@ -31,6 +31,7 @@ We also provide links to open source contributions we've made, hosted elsewhere:
 As well as some packages we did not create, but help maintain:
 
 * http://pypi.python.org/pypi/Products.PloneSoftwareCenter 
+* http://pypi.python.org/pypi/Products.ArchAddOn
 
 And packages we have forked:
 
