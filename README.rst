@@ -34,7 +34,7 @@ As well as some packages we did not create, but help maintain:
 * http://pypi.python.org/pypi/Products.ATCountryWidget
 * http://pypi.python.org/pypi/Products.ArchAddOn
 
-And packages we have forked:
+And finally, packages we have forked:
 
 * http://pypi.python.org/pypi/Pillow
 
