@@ -1,7 +1,7 @@
 Software
 ========
 
-Welcome to our public software repository!
+Welcome to our public build repository!
 
 Buildouts
 ---------
