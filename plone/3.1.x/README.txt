@@ -9,7 +9,7 @@ Installation
     $ virtualenv-2.4 plone
     $ cd plone
     $ bin/easy_install zc.buildout
-    $ curl http://dist.aclark.net/build/plone/2.5.x/extends.cfg > buildout.cfg
+    $ curl http://dist.aclark.net/build/plone/3.1.x/extends.cfg > buildout.cfg
     $ bin/buildout
     $ bin/instance fg
 
